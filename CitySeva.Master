@@ -1,0 +1,329 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" ClientIDMode="Static" CodeBehind="CitySeva.master.cs" Inherits="CitySeva.CitySeva" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Welcome - CitiSeva</title>
+
+
+    <!-- all css files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="Css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="Css/jquery.selectBoxIt.css" type="text/css" />
+    <link rel="stylesheet" href="Css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="Css/owl.theme.default.min.css" />
+    <link href="Css/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="Css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200i,300,300i,400,400i,600,600i,700,700i,800,800i,900i&display=swap" rel="stylesheet">
+
+    <!-- all js files -->
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/popper.min.js"></script>
+
+
+
+    <script type="text/javascript" src="Scripts/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="Scripts/custom.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-ui.min.js"></script>
+    <script src="Scripts/jquery.selectBoxIt.min.js"></script>
+    <script src="Scripts/home.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            $("#selectService").autocomplete({
+                source: function (request, response) {
+                    var param = { CatName: $('#selectService').val() };
+                    $.ajax({
+                        url: "service.aspx/getCategory",
+                        data: JSON.stringify(param),
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataFilter: function (data) { return data; },
+                        success: function (data) {
+                            $("#servicesDiv").hide();
+                            //console.log(JSON.stringify(data));  
+                            response($.map(data.d, function (item) {
+                                return {
+                                    //value: item.EmpName + " (" + item.Address + ")"
+                                    value: item.catgory_name
+
+                                }
+
+                            }))
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            var err = eval("(" + XMLHttpRequest.responseText + ")");
+                            alert(err.Message)
+                            // console.log("Ajax Error!");    
+                        }
+                    });
+                },
+                close: function (event, ui) {
+                    $("#servicesDiv").hide();
+                },
+                minLength: 1 //This is the Char length of inputTextBox    
+            });
+
+
+            $("#selectService").focusin(function () {
+
+                $("#servicesDiv").show();
+
+            });
+            $("#selectService").keypress(function () {
+
+                $("#servicesDiv").hide();
+            });
+
+
+            $("#ulcategory").on("click", "a", function (e) {
+                e.preventDefault();
+                //var $this = $(this).parent();
+                //  $this.addClass("select").siblings().removeClass("select");
+                $("#selectService").val($(this).text());
+                $("#servicesDiv").hide();
+
+            });
+        });
+
+    </script>
+
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+
+        <header class="sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mobs">
+                        <div class="col-lg-2 col-sm-4 col-md-2 text-left pt-1 pull-left col-4">
+                            <a class="navbar-brand logo" href="Default.aspx">CitiSeva</a>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-8 pl-sm-0 pr-sm-0 col-8 pull-right">
+                            <div class="float-right right_menu after_menu">
+
+
+                                <%--  <a class="dropdown-item" href="logout.aspx">Logout</a>--%>
+                                <div class="dropdown" runat="server" id="divLogin">
+
+                                    <%--<asp:Label ID="lbl_username" ForeColor="White" runat="server"></asp:Label>--%>
+
+
+                                    <%-- <asp:Label ID="lbl_user_account" ForeColor="White" runat="server"></asp:Label>--%>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 mobs_sear pull-left">
+                            <div class="filtter">
+                                <div class="input-group ">
+
+                                    <label class="text-white mr-3 pt-2 d-none"><a href="Checklist.aspx" class="text-white">Planning Tools</a></label>
+                                    <div class="position-relative">
+                                        <asp:TextBox ID="selectService" class="form-control" placeholder="Select Service" runat="server"></asp:TextBox>
+                                        <div class="toarrow"></div>
+                                        <div id="servicesDiv" class="all-services sticky_menu">
+
+                                            <ul id="ulcategory">
+                                                <asp:Repeater ID="ddCategorylist" runat="server">
+                                                    <ItemTemplate>
+                                                        <li>
+                                                            <a href="#"><%# Eval("catgory_name") %></a>
+                                                        </li>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-prepend dropdown">
+
+                                        <asp:DropDownList ID="dd_location" runat="server" CssClass="btn btn-primary dropdown-toggle" />
+
+                                    </div>
+
+                                    <div class="input-group-append">
+                                        <%--<button class="btn btn-success" type="button" id="button-addon2"><i class="fa fa-search" aria-hidden="true"></i>
+                        Search</button>--%>
+                                        <asp:Button ID="btn_success" OnClick="btn_success_Click" class="btn btn-success" Text="Search" runat="server" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <%--<div class="col-sm-12 p-sm-0">
+                        <nav class="navbar navbar-expand-lg navbar-light pl-sm-0 pr-sm-0 ">
+                            <a class="navbar-brand logo" href="Default.aspx">CitySeve</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                           
+           
+                
+           
+     
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="Registration.aspx">Planning Tools <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Checklist.aspx">Wedding Venues</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wedding Vendors
+                                        </a>
+                                      
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Brides</a>
+                                    </li>
+                                </ul>
+                               
+                            </div>
+                           
+                        </nav>
+                        
+                    </div>--%>
+                </div>
+            </div>
+        </header>
+        
+        <div class="site-wrap" id="home-section">
+            
+           
+
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+
+
+
+             
+        </div>
+
+        <%--  <div class="footer">
+            <div class="container">
+                <div class="footer_ads">
+                    <div class="footer_ads_box">
+                        <img src="Images/footer_ads.jpg" />
+                    </div>
+                    <div class="footer_ads_box">
+                        <img src="Images/footer_ads1.jpg" />
+                    </div>
+                    <div class="footer_ads_box">
+                        <img src="Images/footer_ads.jpg" />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="footer_content">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h4><span>Choo</span>se a country</h4>
+                            <ul>
+                                <li>
+                                    <a href="#">Mexico
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Chile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Argentina
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Brazil
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Colombia
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Peru
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">United States
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4><span>Info</span>rmation</h4>
+                            <ul>
+                                <li>
+                                    <a href="#">Contact Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Terms & Privacy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Register your business
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">About Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Wedding website
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4><span>Foll</span>ow us on</h4>
+                            <ul>
+                                <li>
+                                    <a href="#">Facebook 
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Twitter
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Pinterest
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Instagram
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>--%>
+        <div class="copyright">
+            <p class="text-center">CitiSeva Copyright 2019-2020 </p>
+        </div>
+    </form>
+</body>
+</html>

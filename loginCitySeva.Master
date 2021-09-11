@@ -1,0 +1,237 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="loginCitySeva.Master.cs" Inherits="CitySeva.loginCitySeva" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>CitiSeva</title>
+
+
+     <!-- all css files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200i,300,300i,400,400i,600,600i,700,700i,800,800i,900i&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="Css/jquery.selectBoxIt.css" type="text/css" />
+    <link rel="stylesheet" href="Css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="Css/owl.theme.default.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="Css/style.css">
+    
+    <!-- all js files -->
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/popper.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript" src="Scripts/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="Scripts/custom.js"></script>
+  <%--<script type="text/javascript" src="Vendor/jquery/jquery-ui.min.js"></script>--%>
+
+    
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+ 
+
+    
+    <script src="Scripts/jquery.selectBoxIt.min.js"></script>
+    <script>
+        $(function () {
+            $("#txt_serviceDate").datepicker();
+        });
+  </script>
+
+    <script>
+
+$(document).ready(function () {
+
+  
+
+    $("#selectService").autocomplete({
+        source: function (request, response) {
+            var param = { CatName: $('#selectService').val() };
+            $.ajax({
+                url: "service.aspx/getCategory",
+                data: JSON.stringify(param),
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataFilter: function (data) { return data; },
+                success: function (data) {
+                    $("#servicesDiv").hide();
+                    //console.log(JSON.stringify(data));  
+                    response($.map(data.d, function (item) {
+                        return {
+                            //value: item.EmpName + " (" + item.Address + ")"
+                            value: item.catgory_name
+
+                        }
+
+                    }))
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    var err = eval("(" + XMLHttpRequest.responseText + ")");
+                    alert(err.Message)
+                    // console.log("Ajax Error!");    
+                }
+            });
+        },
+        close: function (event, ui) {
+            $("#servicesDiv").hide();
+        },
+        minLength: 1 //This is the Char length of inputTextBox    
+    });
+
+
+    $("#selectService").focusin(function () {
+
+        $("#servicesDiv").show();
+
+    });
+    $("#selectService").keypress(function () {
+
+        $("#servicesDiv").hide();
+    });
+
+
+    $("#ulcategory").on("click", "a", function (e) {
+        e.preventDefault();
+        //var $this = $(this).parent();
+        //  $this.addClass("select").siblings().removeClass("select");
+        $("#selectService").val($(this).text());
+        $("#servicesDiv").hide();
+
+    });
+
+    
+
+});
+
+    </script>
+    
+    
+    
+
+   
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mobs">
+                    <div class="col-lg-2 col-sm-4 col-md-2 text-left pt-1 pull-left col-4">
+                        <a class="navbar-brand logo" href="Default.aspx">CitiSeva</a>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-8 pl-sm-0 pr-sm-0 col-8 pull-right">
+                        <div class="float-right right_menu">
+                             <%-- <asp:Label ID="lbl_username" ForeColor="White" Text="Welcome: Guest" runat="server"></asp:Label><br />--%>
+                            <a href="Login.aspx">Login</a>
+                            <a href="Registration.aspx">Free sign up</a>
+
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-8 mobs_sear pull-left">
+                        <div class="filtter">
+                            <div class="input-group ">
+
+                                <label class="text-white mr-3 pt-2 d-none"><a href="Checklist.aspx" class="text-white">Planning Tools</a></label>
+                                <div class="position-relative">
+                                <asp:TextBox ID="selectService" ClientIDMode="Static" class="form-control" placeholder="Select Service" runat="server"></asp:TextBox>
+                                    <div id="servicesDiv" class="all-services">
+                                        <div class="toarrow"></div>
+                                        <ul id="ulcategory">
+                                            <asp:Repeater ID="ddCategorylist" runat="server">
+                                                <ItemTemplate>
+                                                    <li>
+                                                        <a href="#"><%# Eval("catgory_name") %></a>
+                                                    </li>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </ul>
+                                    </div>
+                                    </div>
+                                <div class="input-group-prepend dropdown">
+
+                                    <asp:DropDownList ID="dd_location" runat="server" CssClass="btn btn-primary dropdown-toggle" />
+
+                                </div>
+
+                                <div class="input-group-append">
+                                    <%--<button class="btn btn-success" type="button" id="button-addon2"><i class="fa fa-search" aria-hidden="true"></i>
+                        Search</button>--%>
+                                    <asp:Button ID="btn_success" OnClick="btn_success_Click" CausesValidation="false" class="btn btn-success" Text="Submit" runat="server" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    </div>
+                  
+
+
+                    <%--<div class="col-sm-12 p-sm-0">
+                        <nav class="navbar navbar-expand-lg navbar-light pl-sm-0 pr-sm-0 ">
+                            <a class="navbar-brand logo" href="Default.aspx">CitySeve</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                           
+           
+                
+           
+     
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="Registration.aspx">Planning Tools <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Checklist.aspx">Wedding Venues</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wedding Vendors
+                                        </a>
+                                      
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Brides</a>
+                                    </li>
+                                </ul>
+                               
+                            </div>
+                           
+                        </nav>
+                        
+                    </div>--%>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="site-wrap" id="home-section">
+
+
+
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+
+
+        </div>
+
+       
+         <div class="copyright">
+                <p class="text-center">CitiSeva Copyright 2019-2020 </p>
+            </div>
+    </form>
+</body>
+</html>
