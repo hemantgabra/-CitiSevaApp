@@ -230,7 +230,7 @@ $(document).ready(function () {
 
        
          <div class="copyright">
-                <p class="text-center">CitiSeva Copyright 2019-2020 </p>
+                <p class="text-center">CitiSeva Copyright 2020-2021 </p>
             </div>
     </form>
 </body>
