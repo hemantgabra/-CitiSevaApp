@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CitySeva.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="WebForm2.aspx.cs" Inherits="CitySeva.WebForm2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CitySeva.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="Vendor.aspx.cs" Inherits="CitySeva.Vendor" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -14,17 +14,8 @@
                     <asp:Button ID="Businesstab" class="nav-link" OnClick="Businesstab_Click" Text="Business Contact" runat="server"></asp:Button>
 
                     <asp:Button ID="Producttab" class="nav-link" OnClick="Producttab_Click" Text="Add Service / Product" runat="server"></asp:Button>
-                    <%-- 
-                    
-                    
-                    <a class="nav-link" id="v-pills-Product-tab" data-toggle="pill" href="#v-pills-Product" role="tab" aria-controls="v-pills-Product" aria-selected="false">Add Service / Product</a>
-                    <a class="nav-link" id="v-pills-Payment-tab" data-toggle="pill" href="#v-pills-Payment" role="tab" aria-controls="v-pills-Payment" aria-selected="false">Payment Type</a>
-                    <a class="nav-link" id="v-pills-Photo-tab" data-toggle="pill" href="#v-pills-Photo" role="tab" aria-controls="v-pills-Photo" aria-selected="false">Add Photo</a>
-                    <a class="nav-link" id="v-pills-Customer-tab" data-toggle="pill" href="#v-pills-Customer" role="tab" aria-controls="v-pills-Customer" aria-selected="false">Customer Enquiry</a>
-                    <a class="nav-link" id="v-pills-Pragramme-tab" data-toggle="pill" href="#v-pills-Pragramme" role="tab" aria-controls="v-pills-Pragramme" aria-selected="false">Pragramme Setting</a>
-                    <a class="nav-link" id="v-pills-Menu-tab" data-toggle="pill" href="#v-pills-Menu" role="tab" aria-controls="v-pills-Menu" aria-selected="false">Menu Setting</a>
-                    <a class="nav-link" id="v-pills-Keyword-tab" data-toggle="pill" href="#v-pills-Keyword" role="tab" aria-controls="v-pills-Keyword" aria-selected="false">Business Keyword</a>
-                    <a class="nav-link" id="v-pills-Description-tab" data-toggle="pill" href="#v-pills-Description" role="tab" aria-controls="v-pills-Description" aria-selected="false">Business Description</a>--%>
+                    <asp:Button ID="UploadPhotos" class="nav-link" OnClick="UploadPhotos_Click" Text="Upload Photos" runat="server"></asp:Button>
+                    <asp:Button ID="BusinessInformationBtn" class="nav-link" OnClick="BusinessInformationBtn_Click" Text="Business Information" runat="server"></asp:Button>
                 </div>
             </td>
             <td>
@@ -199,12 +190,12 @@
                                                 <tr>
 
                                                     <td>
-                                                         <asp:CheckBox Text='<%#Eval("Item")%>' CssClass="form-control"  ID="chkRequired" runat="server" />
-                                                         
-                                                       
+                                                        <asp:CheckBox Text='<%#Eval("Item")%>' CssClass="form-control" ID="chkRequired" runat="server" />
+
+
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txt_" CssClass="form-control"   runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txt_" CssClass="form-control" runat="server"></asp:TextBox>
 
                                                     </td>
                                                     <td>
@@ -221,21 +212,23 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <label  for="txtNoOfGust">No. Of Guest</label>
+                                        <label for="txtNoOfGust">No. Of Guest</label>
                                         <asp:TextBox ID="txtNoOfGust" CssClass="form-control" runat="server"></asp:TextBox>
-                                         
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="businesssName">Services</label>
-                                       <asp:CheckBoxList ID="chk_service"  runat="server">
 
-                                       </asp:CheckBoxList>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="businesssName">Services</label>
+                                        <asp:CheckBoxList ID="chk_service" runat="server">
+                                        </asp:CheckBoxList>
+                                    </div>
+
+                                    <div style="clear: both; height: 10px;"></div>
+                                    <asp:Button ID="btnSaveProductPerPalte" runat="server" OnClick="btnSaveProductPerPalte_Click" Text="Save" />
                                 </div>
 
                             </asp:Panel>
                             <asp:Panel ID="PanlCookingPackag" Visible="false" runat="server">
-                                 <div id="Cooking">
+                                <div id="Cooking">
                                     <h3>Business Contact</h3>
                                     <div class="form-group">
                                         <label for="businesssName">Cooking Package Price</label>
@@ -269,12 +262,12 @@
                                                 <tr>
 
                                                     <td>
-                                                         <asp:CheckBox Text='<%#Eval("Item")%>' CssClass="form-control"  ID="chkRequired" runat="server" />
-                                                         
-                                                       
+                                                        <asp:CheckBox Text='<%#Eval("Item")%>' CssClass="form-control" ID="chkRequired" runat="server" />
+
+
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txt_" CssClass="form-control"   runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txt_" CssClass="form-control" runat="server"></asp:TextBox>
 
                                                     </td>
                                                     <td>
@@ -291,29 +284,97 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <label  for="txtNoOfGust">No. Of Guest</label>
+                                        <label for="txtNoOfGust">No. Of Guest</label>
                                         <asp:TextBox ID="TextBox2" CssClass="form-control" runat="server"></asp:TextBox>
-                                         
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="businesssName">Services</label>
-                                       <asp:CheckBoxList ID="chk_serviceCooking"  runat="server">
 
-                                       </asp:CheckBoxList>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="businesssName">Services</label>
+                                        <asp:CheckBoxList ID="chk_serviceCooking" runat="server">
+                                        </asp:CheckBoxList>
+                                    </div>
+                                    <div style="clear: both; height: 10px;"></div>
+                                    <asp:Button ID="btnSaveCookingPackage" runat="server" OnClick="btnSaveCookingPackage_Click" Text="Save" />
                                 </div>
 
                             </asp:Panel>
                         </asp:Panel>
+                        <asp:Panel ID="PanlUploadPhotos" Visible="false" runat="server">
+                            <asp:Image ID="imgEdit" Width="100px" Height="100px" Visible="false" runat="server" />
+                            <asp:HiddenField ID="hidUpdate" runat="server" />
+                            <asp:HiddenField ID="hidOldImage" runat="server" />
+                            <asp:FileUpload ID="FilePhotosUpload" CssClass="form-control" runat="server" />
+
+                            <asp:RequiredFieldValidator ID="reqPhotos" runat="server" ControlToValidate="FilePhotosUpload" ValidationGroup="imageUpload" ForeColor="Red" ErrorMessage="Please select image" Display="Dynamic"></asp:RequiredFieldValidator>
+
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <asp:TextBox ID="txtImageName" runat="server" class="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" ValidationGroup="imageUpload" ControlToValidate="txtLastName" Display="Dynamic" ForeColor="Red" ErrorMessage="Image name is required" runat="server"></asp:RequiredFieldValidator>
+                            </div>
+                            <asp:Button ID="btnUploadPhotos" runat="server" Text="Save" ValidationGroup="imageUpload" OnClick="btnUploadPhotos_Click" />
+                            <asp:Button ID="btnCanel" runat="server" Text="Cancel" CausesValidation="false" ValidationGroup="imageUpload" OnClick="btnCanel_Click" />
+
+                            <div class="form-group">
+                                <label for="businesssName"></label>
+
+                                <asp:Repeater ID="ReptPhotos" OnItemCommand="ReptPhotos_ItemCommand" runat="server">
+                                    <HeaderTemplate>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <table class="table table-bordered">
+                                            <tr>
+
+                                                <td>
+                                                    <asp:Image ID="Image1" ImageUrl='<%# String.Format(string.Concat("Uploads/",Eval("ImagePath")))%>' Width="50px" Height="50px" runat="server" />
+
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="lblImageName" runat="server" Text='<%#Eval("ImageName") %>'></asp:Label>
+
+                                                </td>
+                                                <td>
+                                                    <asp:Button ID="btnEdit" Text="edit" CommandArgument='<%#Eval("Id")%>' CommandName="Edit1" runat="server" />
+                                                    <asp:Button ID="btnDelete" Text="delete" OnClientClick="return confirm('Are you sure you want do  delete image')" CommandArgument='<%#Eval("Id")%>' CommandName="Delete" runat="server" />
+
+                                                </td>
+
+                                            </tr>
+                                        </table>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+
+                            </div>
+                        </asp:Panel>
+
+                        <asp:Panel ID="PanlBusinessInfo" Visible="false" runat="server">
+                            <asp:HiddenField ID="hidBusinessInfo" runat="server" />
+                            <div id="businessInfo">
+                                <h3>Business Information</h3>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Business Information</label>
+                                    <asp:TextBox ID="txtBusinessInfo" runat="server" TextMode="MultiLine" Height="300px" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator17" ValidationGroup="BusinessInfoGroup" ControlToValidate="txtBusinessInfo" Display="Dynamic" ForeColor="Red" ErrorMessage="Business is required" runat="server"></asp:RequiredFieldValidator>
+                                </div>
 
 
 
 
-                        <div class="tab-pane fade" id="v-pills-Payment" role="tabpanel" aria-labelledby="v-pills-Payment-tab">Similarly, you can create pill based navigation by adding the class .nav-pills on the basic nav instead of class .nav-tabs, as shown in the following example:</div>
-                        <div class="tab-pane fade" id="v-pills-Photo" role="tabpanel" aria-labelledby="v-pills-Photo-tab">Similarly, you can create pill based navigation by adding the class .nav-pills on the basic nav instead of class .nav-tabs, as shown in the following example:</div>
-                        <div class="tab-pane fade" id="v-pills-Menu" role="tabpanel" aria-labelledby="v-pills-Menu-tab">Similarly, you can create pill based navigation by adding the class .nav-pills on the basic nav instead of class .nav-tabs, as shown in the following example:</div>
-                        <div class="tab-pane fade" id="v-pills-Keyword" role="tabpanel" aria-labelledby="v-pills-Keyword-tab">Similarly, you can create pill based navigation by adding the class .nav-pills on the basic nav instead of class .nav-tabs, as shown in the following example:</div>
-                        <div class="tab-pane fade" id="v-pills-Description" role="tabpanel" aria-labelledby="v-pills-Description-tab">Similarly, you can create pill based navigation by adding the class .nav-pills on the basic nav instead of class .nav-tabs, as shown in the following example:</div>
+                                <div class="form-group">
+                                </div>
+                                <asp:Button ID="btnSaveBusinessInfo" class="btn btn-primary" ValidationGroup="BusinessInfoGroup" OnClick="btnSaveBusinessInfo_Click" runat="server" Text="Save" />
+
+
+                                <div>
+
+                                    <asp:Label ID="lblMessageBusinessInfo" runat="server"></asp:Label>
+                                </div>
+                            </div>
+
+                        </asp:Panel>
+
                     </div>
                 </div>
             </td>
