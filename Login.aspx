@@ -32,7 +32,7 @@
                 <asp:Button ID="btn_Login" CssClass="btn btn-block btn-danger login_btn" OnClick="btn_Login_Click" Text="Log In" runat="server" />
                 <br />
 
-                <asp:Label ID="lblMsg" runat="server"></asp:Label>
+                <span class="txt-error"><asp:Label ID="lblMsg" runat="server"></asp:Label></span>
             </div>
         </div>
     </div>
