@@ -73,5 +73,34 @@ namespace CitySeva.Models
             return DataHealper.DbExecuteDataTable("usp_Service_get_list");
 
         }
+        public string SaveVendorImage(int Id,string ImageName, string ImagePath,int addedBy)
+        {
+            SqlParameter[] pram = {new SqlParameter("@Id", Id), new SqlParameter("@ImageName", ImageName),
+                new SqlParameter("@ImagePath", ImagePath), new SqlParameter("@AddedBy", addedBy) };
+
+            return DataHealper.DbExecuteExecuteScalar("uspVendorImagesInsert", pram).ToString();
+        }
+        public DataTable GetVendorImages(int Id)
+        {
+            SqlParameter[] pram = { new SqlParameter("@VendorId", Id) };
+            return DataHealper.DbExecuteDataTable("uspVendorImagesGet", pram);
+        }
+        public DataTable GetVendorImagesById(int Id)
+        {
+            SqlParameter[] pram = { new SqlParameter("@Id", Id) };
+            return DataHealper.DbExecuteDataTable("uspVendorImagesGetById", pram);
+        }
+        public DataTable GetBusinessInfoById(int Id)
+        {
+            SqlParameter[] pram = { new SqlParameter("@UserId", Id) };
+            return DataHealper.DbExecuteDataTable("usp_BusinessInfo_get_by_Id", pram);
+        }
+        public string SaveBusinessInfo(int Id, string BusinessInfo,   int addedBy)
+        {
+            SqlParameter[] pram = {new SqlParameter("@Id", Id), new SqlParameter("@BusinessInfo", BusinessInfo),
+                  new SqlParameter("@AddedBy", addedBy) };
+
+            return DataHealper.DbExecuteExecuteScalar("usp_BusinessInfo_add_update", pram).ToString();
+        }
     }
 }

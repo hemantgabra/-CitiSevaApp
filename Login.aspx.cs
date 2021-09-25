@@ -27,7 +27,7 @@ namespace CitySeva
 
                     if (clsMain.isActiveUser() == true)
                     {
-                        Response.Redirect("webForm2.aspx");
+                        Response.Redirect("Vendor.aspx");
                         //Response.Redirect("Admin/UserTaskDetails.aspx");
                     }
                     else
