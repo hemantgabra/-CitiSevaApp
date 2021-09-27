@@ -45,6 +45,21 @@ namespace CitySeva.Models
                 return dataTable;
             }
         }
+        public static DataSet DbExecuteDataSet(string commandText, params SqlParameter[] parameters)
+        {
+            DataSet ds = new DataSet();
+            using (var connection = new SqlConnection(DbConnection))
+            using (var command = new SqlCommand(commandText, connection))
+            {
+                DataTable dataTable = new DataTable();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddRange(parameters);
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                da.Fill(ds);
+                connection.Close();
+                return ds;
+            }
+        }
 
 
         public static DataTable DbExecuteDataTable(string commandText)

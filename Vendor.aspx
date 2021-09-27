@@ -159,6 +159,7 @@
                                 <div id="Product">
                                     <h3>Business Contact</h3>
                                     <div class="form-group">
+                                        <asp:HiddenField ID="hidPerPlatePrice" runat="server" />
                                         <label for="businesssName">Per Plate Price</label>
                                         <asp:DropDownList ID="ddl_PerPlatePrice" runat="server">
                                             <asp:ListItem Text="300" Value="300"></asp:ListItem>
@@ -171,8 +172,8 @@
 
                                     <div class="form-group">
                                         <label for="businesssName"></label>
-
-                                        <asp:Repeater ID="rept" runat="server">
+                                        <asp:HiddenField ID="hidPlateSystemUpdate" runat="server" />
+                                        <asp:Repeater ID="reptPricePerPlate"    runat="server">
                                             <HeaderTemplate>
                                                 <table class="table table-bordered">
                                                     <tr>
@@ -190,17 +191,18 @@
                                                 <tr>
 
                                                     <td>
-                                                        <asp:CheckBox Text='<%#Eval("Item")%>' CssClass="form-control" ID="chkRequired" runat="server" />
-
-
-                                                    </td>
-                                                    <td>
-                                                        <asp:TextBox ID="txt_" CssClass="form-control" runat="server"></asp:TextBox>
+                                                        <asp:CheckBox  Text='<%#Eval("Item")%>'   Checked='<%#Eval("IsItem").ToString()=="1"?true:false%>'  CssClass="form-control" ID="chkRequired" runat="server" />
+                                                        <asp:HiddenField ID="hidItemID" Value='<%#Eval("ItemId")%>' runat="server" />
+                                                         <asp:HiddenField ID="hidItemIdUpdate" Value='<%#Eval("ItemId")%>' runat="server" />
 
                                                     </td>
                                                     <td>
+                                                        <asp:TextBox ID="txtItemType" Text='<%#Eval("ItemType")%>'  CssClass="form-control" runat="server"></asp:TextBox>
 
-                                                        <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                                                    </td>
+                                                    <td>
+
+                                                        <asp:TextBox ID="txtItemName" Text='<%#Eval("ItemName")%>' CssClass="form-control" runat="server"></asp:TextBox>
                                                     </td>
 
                                                 </tr>
@@ -224,6 +226,7 @@
 
                                     <div style="clear: both; height: 10px;"></div>
                                     <asp:Button ID="btnSaveProductPerPalte" runat="server" OnClick="btnSaveProductPerPalte_Click" Text="Save" />
+                                    <asp:Label ID="lblMessageServicePlateSystem" runat="server"></asp:Label>
                                 </div>
 
                             </asp:Panel>
@@ -232,7 +235,7 @@
                                     <h3>Business Contact</h3>
                                     <div class="form-group">
                                         <label for="businesssName">Cooking Package Price</label>
-                                        <asp:DropDownList ID="DropDownList1" runat="server">
+                                        <asp:DropDownList ID="ddlCooking" runat="server">
                                             <asp:ListItem Text="100000" Value="100000"></asp:ListItem>
                                             <asp:ListItem Text="150000" Value="150000"></asp:ListItem>
                                             <asp:ListItem Text="2000000" Value="200000"></asp:ListItem>
@@ -262,17 +265,19 @@
                                                 <tr>
 
                                                     <td>
-                                                        <asp:CheckBox Text='<%#Eval("Item")%>' CssClass="form-control" ID="chkRequired" runat="server" />
+                                                      <asp:CheckBox  Text='<%#Eval("Item")%>'   Checked='<%#Eval("IsItem").ToString()=="1"?true:false%>'  CssClass="form-control" ID="chkCooking" runat="server" />
+                                                        <asp:HiddenField ID="hidItemIDCooking" Value='<%#Eval("ItemId")%>' runat="server" />
+                                                         <asp:HiddenField ID="hidItemIdUpdateCooking" Value='<%#Eval("ItemId")%>' runat="server" />
 
 
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txt_" CssClass="form-control" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtItemTypeCooking" CssClass="form-control" runat="server"></asp:TextBox>
 
                                                     </td>
                                                     <td>
 
-                                                        <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtItemNameCooking" CssClass="form-control" runat="server"></asp:TextBox>
                                                     </td>
 
                                                 </tr>
@@ -285,7 +290,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="txtNoOfGust">No. Of Guest</label>
-                                        <asp:TextBox ID="TextBox2" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtNoOfGustCooking" CssClass="form-control" runat="server"></asp:TextBox>
 
                                     </div>
                                     <div class="form-group">
@@ -295,6 +300,7 @@
                                     </div>
                                     <div style="clear: both; height: 10px;"></div>
                                     <asp:Button ID="btnSaveCookingPackage" runat="server" OnClick="btnSaveCookingPackage_Click" Text="Save" />
+                                    <asp:Label ID="lblMessageCooking" runat="server"></asp:Label>
                                 </div>
 
                             </asp:Panel>
