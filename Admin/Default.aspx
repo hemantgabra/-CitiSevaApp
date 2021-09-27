@@ -6,10 +6,14 @@
 <head runat="server">
     <title>CitiSeva</title>
     <link href="Css/login.css" rel="stylesheet" type="text/css" />
+    <link href="../Css/bootstrap.min.css" rel="stylesheet" />
+      
+    <script src="../Scripts/bootstrap.min.js"></script>
+  
+  
+<%--    <script type="text/javascript" src="../Vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 
-    <script type="text/javascript" src="../Vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link href="../Vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../Vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
 
 </head>
 <body>
