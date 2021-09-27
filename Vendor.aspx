@@ -2,12 +2,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <table class="table table-borderless position-absolute mt-5">
-        <tr>
-
-            <td class="col-3">
-
-                <div class="nav flex-column nav-pills" style="width: 100%;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+   <div class="container">
+       <div class="row">
+                <div class="nav flex-column nav-pills col-2 pt-3 vendor-reg-left" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                     <asp:Button ID="Dashboardtab" class="nav-link" OnClick="Dashboardtab_Click" Text="Dashboard" runat="server"></asp:Button>
                     <asp:Button ID="Personaltab" class="nav-link" OnClick="Personaltab_Click" Text="Personal Contact" runat="server"></asp:Button>
@@ -17,58 +14,65 @@
                     <asp:Button ID="UploadPhotos" class="nav-link" OnClick="UploadPhotos_Click" Text="Upload Photos" runat="server"></asp:Button>
                     <asp:Button ID="BusinessInformationBtn" class="nav-link" OnClick="BusinessInformationBtn_Click" Text="Business Information" runat="server"></asp:Button>
                 </div>
-            </td>
-            <td>
+         
 
-                <div class="col-9">
-
+                <div class="col-10">
 
 
-                    <div class="tab-content" id="v-pills-tabContent">
+
+                    <div class="tab-content pt-3" id="v-pills-tabContent">
                         <asp:Panel ID="PanlDashboard" Visible="false" runat="server">ghgfhgfhfhgfhgfhgf</asp:Panel>
                         <asp:Panel ID="PanlPersonal" Visible="false" runat="server">
 
                             <div id="PersonalContact">
                                 <h3>personal contact</h3>
-                                <div class="form-group">
+                                <div class="row">
+                                <div class="col">
                                     <label for="exampleInputEmail1">First Name</label>
                                     <asp:TextBox ID="txtFirstName" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="PersonalContactGroup" ControlToValidate="txtFirstName" Display="Dynamic" ForeColor="Red" ErrorMessage="First name is required" runat="server"></asp:RequiredFieldValidator>
-                                </div>
-                                <div class="form-group">
+                                    </div>
+                                    <div class="col">
                                     <label for="exampleInputPassword1">Last Name</label>
                                     <asp:TextBox ID="txtLastName" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="PersonalContactGroup" ControlToValidate="txtLastName" Display="Dynamic" ForeColor="Red" ErrorMessage="Last name is required" runat="server"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="form-group">
+                                </div>
+                                
+                                <div class="row mt-4">
+                                    <div class="col">
                                     <label for="mobileNumber">Mobile Number</label>
                                     <asp:TextBox ID="txtMobileNumber" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ValidationGroup="PersonalContactGroup" ControlToValidate="txtMobileNumber" Display="Dynamic" ForeColor="Red" ErrorMessage="Mobile number is required" runat="server"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ValidationGroup="PersonalContactGroup" runat="server" Display="Dynamic" ForeColor="Red" ControlToValidate="txtMobileNumber" ValidationExpression="^[0-9]{0,10}$" ErrorMessage="Mobile number is not valid"></asp:RegularExpressionValidator>
                                 </div>
-                                <div class="form-group">
+                                    <div class="col">
                                     <label for="homeAddress">Home Address</label>
                                     <asp:TextBox ID="txtHomeAddress" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="PersonalContactGroup" ControlToValidate="txtHomeAddress" Display="Dynamic" ForeColor="Red" ErrorMessage="Address is required" runat="server"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="form-group">
+                                    </div>
+                                <div class="row mt-4">
+                                    <div class="col">
                                     <label for="emailId">Email Id</label>
                                     <asp:TextBox ID="txtEmailId" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="PersonalContactGroup" ControlToValidate="txtEmailId" Display="Dynamic" ForeColor="Red" ErrorMessage="Email name is required" runat="server"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="reg1" runat="server" ValidationGroup="PersonalContactGroup" Display="Dynamic" ForeColor="Red" ControlToValidate="txtEmailId" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorMessage="Email address is not valid"></asp:RegularExpressionValidator>
-                                </div>
-                                <div class="form-group">
+                               </div>
+                                    <div class="col">
                                     <label for="City">City</label>
                                     <asp:TextBox ID="txtCity" runat="server" MaxLength="50" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ValidationGroup="PersonalContactGroup" ControlToValidate="txtCity" Display="Dynamic" ForeColor="Red" ErrorMessage="city is required" runat="server"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="form-group">
+                                    </div>
+                                <div class="row mt-4 mb-4">
+                                    <div class="col">
                                     <label for="pincode">Pincode</label>
                                     <asp:TextBox ID="txtPincode" MaxLength="6" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="PersonalContactGroup" ControlToValidate="txtPincode" Display="Dynamic" ForeColor="Red" ErrorMessage="Pin code is required" runat="server"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ValidationGroup="PersonalContactGroup" runat="server" Display="Dynamic" ForeColor="Red" ControlToValidate="txtPincode" ValidationExpression="^[0-9]{0,10}$" ErrorMessage="Pin code is not valid"></asp:RegularExpressionValidator>
                                 </div>
-                                <div class="form-group">
+                                    <div class="col">
                                     <label for="state">State</label>
 
                                     <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control">
@@ -78,8 +82,8 @@
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ValidationGroup="PersonalContactGroup" InitialValue="0" ControlToValidate="ddlState" Display="Dynamic" ForeColor="Red" ErrorMessage="State is required" runat="server"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="form-group">
-                                </div>
+                                    </div>
+                               
                                 <asp:Button ID="btnSubmit" class="btn btn-primary" ValidationGroup="PersonalContactGroup" OnClick="btnSubmit_Click" runat="server" Text="Submit" />
 
 
@@ -94,54 +98,58 @@
 
                             <div id="BusinessContact">
                                 <h3>Business Contact</h3>
-                                <div class="form-group">
+                                <div class="row mb-4">
+                                    <div class="col">
                                     <label for="businesssName">Business Name</label>
                                     <asp:TextBox ID="txtBusinessName" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessName" Display="Dynamic" ForeColor="Red" ErrorMessage="First name is required" runat="server"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="form-group">
+                                    <div class="col">
                                     <label for="lblBusinessCategory">Business Category</label>
                                     <asp:TextBox ID="txtBusinessCategory" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessCategory" Display="Dynamic" ForeColor="Red" ErrorMessage="Last name is required" runat="server"></asp:RequiredFieldValidator>
                                 </div>
+                                </div>
 
-                                <div class="form-group">
+                                <div class="row mb-4">
+                                    <div class="col">
                                     <label for="lblBusinessAddress">Business Address</label>
                                     <asp:TextBox ID="txtBusinessAddress" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessAddress" Display="Dynamic" ForeColor="Red" ErrorMessage=" Business Address is required" runat="server"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="form-group">
+                                    <div class="col">
                                     <label for="lbltxtBusinessCity">City</label>
                                     <asp:TextBox ID="txtBusinessCity" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessCity" Display="Dynamic" ForeColor="Red" ErrorMessage="City is required" runat="server"></asp:RequiredFieldValidator>
-
+                                        </div>
                                 </div>
 
-                                <div class="from-group">
+                                <div class="row mb-4">
+                                    <div class="col">
                                     <label for="lbltxtBusinessCity">Other City</label>
                                     <asp:CheckBox ID="chkYes" CssClass="list-group-item" runat="server" Text="&nbsp;Yes" />
                                     <asp:CheckBox ID="chkTravel" CssClass="list-group-item" runat="server" Text="&nbsp;Travel & Stay by Client" />
                                 </div>
-                                <div class="form-group">
+                                    <div class="col">
                                     <label for="lblpincode">Pincode</label>
                                     <asp:TextBox ID="txtBusinessPinCode" MaxLength="6" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator15" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessPinCode" Display="Dynamic" ForeColor="Red" ErrorMessage="Pin code is required" runat="server"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" ValidationGroup="BusinessContactGroup" runat="server" Display="Dynamic" ForeColor="Red" ControlToValidate="txtBusinessPinCode" ValidationExpression="^[0-9]{0,10}$" ErrorMessage="Pin code is not valid"></asp:RegularExpressionValidator>
                                 </div>
-                                <div class="form-group">
+                                    </div>
+                                <div class="row mb-4">
+                                    <div class="col">
                                     <label for="lblState">City</label>
                                     <asp:TextBox ID="txtState" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" ValidationGroup="BusinessContactGroup" ControlToValidate="txtState" Display="Dynamic" ForeColor="Red" ErrorMessage="State is required" runat="server"></asp:RequiredFieldValidator>
-
-                                </div>
-                                <div class="form-group">
+                                        </div>
+                               <div class="col">
                                     <label for="lblBusinessRunningFrom">Business Running From (YYYY)</label>
                                     <asp:TextBox ID="txtBusinessRunning" runat="server" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator14" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessRunning" Display="Dynamic" ForeColor="Red" ErrorMessage="Business Running from is required" runat="server"></asp:RequiredFieldValidator>
-
+                                   </div>
                                 </div>
-                                <div class="form-group">
-                                </div>
+                              
                                 <asp:Button ID="btnBusinessContact" class="btn btn-primary" ValidationGroup="BusinessContactGroup" OnClick="btnBusinessContact_Click" runat="server" Text="Submit" />
 
 
@@ -383,10 +391,10 @@
 
                     </div>
                 </div>
-            </td>
-        </tr>
+         </div>
+       </div>
 
-    </table>
+  
 
 
 

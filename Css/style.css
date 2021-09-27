@@ -1,4 +1,9 @@
-﻿body {
+﻿form, html, body {
+  padding: 0;
+  margin: 0;
+  font-size: 13px; }
+
+body {
   font-family: 'Nunito', sans-serif;
   /*background: #f8f8f8;*/ }
 
@@ -26,6 +31,10 @@ header {
   background: #3a434c;
   height: 60px;
   width: 100%; }
+
+#footerBottom {
+  position: relative;
+  min-height: 100vh; }
 
 .navbar-brand.logo {
   font-size: 25px;
@@ -628,7 +637,10 @@ header {
 
 .copyright {
   background-color: #efefef;
-  padding: 15px; }
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
 
 .copyright p {
   margin-bottom: 0;
@@ -1640,3 +1652,23 @@ header {
     background: transparent;
     width: 50%;
     margin-top: 5px; } }
+
+.vendor-reg-left {
+  border-right: 1px solid #ddd;
+  padding-right: 0; }
+  .vendor-reg-left .nav-link {
+    background: transparent;
+    text-align: left;
+    padding: 10px 10px 10px 10px;
+    color: #fb1b26; }
+  .vendor-reg-left .nav-link.active {
+    background: white;
+    color: #494949;
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: -1px;
+    padding: 9px 10px 9px 9px;
+    font-weight: 600; }
