@@ -104,10 +104,10 @@
 <body>
 
     <form id="form1" runat="server">
-
-        <header class="sticky">
-            <div class="container">
-                <div class="row">
+        <div class="container-fluid p-0" id="footerBottom">
+               
+        <header class="sticky-top">
+            
                     <div class="col-lg-12 mobs">
                         <div class="col-lg-2 col-sm-4 col-md-2 text-left pt-1 pull-left col-4">
                             <a class="navbar-brand logo" href="Default.aspx">CitiSeva</a>
@@ -200,11 +200,11 @@
                         </nav>
                         
                     </div>--%>
-                </div>
-            </div>
-        </header>
+            </header>
+              
         
-        <div class="site-wrap" id="home-section">
+        
+        <div id="home-section pb-5">
             
            
 
@@ -324,6 +324,8 @@
         <div class="copyright">
             <p class="text-center">CitiSeva Copyright 2019-2020 </p>
         </div>
+                      </div>
+          
     </form>
 </body>
 </html>

@@ -89,6 +89,7 @@
     <Content Include="ChangeLogin.aspx" />
     <Content Include="changePassword.aspx" />
     <Content Include="Checklist.aspx" />
+    <Content Include="Css\bootstrap.bundle.min.js" />
     <Content Include="Css\bootstrap.css" />
     <Content Include="Css\bootstrap.min.css" />
     <Content Include="Css\font-awesome.min.css" />
@@ -102,6 +103,7 @@
     <Content Include="Css\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Uploads\download %281%29.jpg" />
     <Content Include="Vendor-details.aspx" />
     <Content Include="Default.aspx" />

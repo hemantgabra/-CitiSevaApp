@@ -490,6 +490,15 @@ namespace CitySeva {
         protected global::System.Web.UI.WebControls.Panel PanlPricePerPlate;
         
         /// <summary>
+        /// hidPerPlatePrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidPerPlatePrice;
+        
+        /// <summary>
         /// ddl_PerPlatePrice control.
         /// </summary>
         /// <remarks>
@@ -499,13 +508,22 @@ namespace CitySeva {
         protected global::System.Web.UI.WebControls.DropDownList ddl_PerPlatePrice;
         
         /// <summary>
-        /// rept control.
+        /// hidPlateSystemUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rept;
+        protected global::System.Web.UI.WebControls.HiddenField hidPlateSystemUpdate;
+        
+        /// <summary>
+        /// reptPricePerPlate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater reptPricePerPlate;
         
         /// <summary>
         /// txtNoOfGust control.
@@ -535,6 +553,15 @@ namespace CitySeva {
         protected global::System.Web.UI.WebControls.Button btnSaveProductPerPalte;
         
         /// <summary>
+        /// lblMessageServicePlateSystem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessageServicePlateSystem;
+        
+        /// <summary>
         /// PanlCookingPackag control.
         /// </summary>
         /// <remarks>
@@ -544,13 +571,13 @@ namespace CitySeva {
         protected global::System.Web.UI.WebControls.Panel PanlCookingPackag;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// ddlCooking control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCooking;
         
         /// <summary>
         /// RepeaterCooking control.
@@ -562,13 +589,13 @@ namespace CitySeva {
         protected global::System.Web.UI.WebControls.Repeater RepeaterCooking;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtNoOfGustCooking control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtNoOfGustCooking;
         
         /// <summary>
         /// chk_serviceCooking control.
@@ -587,6 +614,15 @@ namespace CitySeva {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveCookingPackage;
+        
+        /// <summary>
+        /// lblMessageCooking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessageCooking;
         
         /// <summary>
         /// PanlUploadPhotos control.
