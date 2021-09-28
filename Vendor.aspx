@@ -127,8 +127,20 @@
                                 <div class="row mb-4">
                                     <div class="col">
                                     <label for="lbltxtBusinessCity">Other City</label>
-                                    <asp:CheckBox ID="chkYes" CssClass="list-group-item" runat="server" Text="&nbsp;Yes" />
-                                    <asp:CheckBox ID="chkTravel" CssClass="list-group-item" runat="server" Text="&nbsp;Travel & Stay by Client" />
+                                        <div>
+                                            <div class="form-check form-check-inline">
+
+<asp:CheckBox ID="chkYes" CssClass="form-check-input" runat="server" />
+<label class="form-check-label" for="inlineCheckbox1">Yes</label>
+
+</div>
+<div class="form-check form-check-inline">
+    <asp:CheckBox ID="chkTravel" CssClass="form-check-input" runat="server" />
+    <label class="form-check-label" for="inlineCheckbox2">Travel & Stay by Client</label>
+</div>
+                                    
+                                    
+                                            </div>
                                 </div>
                                     <div class="col">
                                     <label for="lblpincode">Pincode</label>
