@@ -137,19 +137,43 @@ namespace CitySeva
 
             LinkActiveInActive(Producttab, "active");
             ShowHidePanel(panlProduct, true);
-            DataTable dt = dllVendor.GetIProductIems();
-            if (dt.Rows.Count > 0)
+
+            DataSet ds = dllVendor.GetSerivceTpye(clsMain.getLoggedUserID(), "Plate System");
+
+            if (ds.Tables[0].Rows.Count > 0)
             {
-                rept.DataSource = dt;
-                rept.DataBind();
+                ddl_PerPlatePrice.SelectedValue = ds.Tables[0].Rows[0]["PerPlatePrice"].ToString();
+                hidPerPlatePrice.Value = ds.Tables[0].Rows[0]["Id"].ToString();
             }
-            DataTable dtService = dllVendor.GetIServicesIems();
-            if (dtService.Rows.Count > 0)
+
+
+            if (ds.Tables[1].Rows.Count > 0)
             {
-                chk_service.DataSource = dtService;
+                reptPricePerPlate.DataSource = ds.Tables[1];
+                reptPricePerPlate.DataBind();
+            }
+
+            if (ds.Tables[2].Rows.Count > 0)
+            {
+                chk_service.DataSource = ds.Tables[2];
                 chk_service.DataTextField = "Service";
                 chk_service.DataValueField = "ServiceId";
                 chk_service.DataBind();
+
+
+                foreach (ListItem item in chk_service.Items)
+                {
+
+                    foreach (DataRow dr in ds.Tables[2].Rows)
+                    {
+
+
+                        if (item.Value == dr["ServiceOfferedId"].ToString())
+                        {
+                            item.Selected = true;
+                        }
+                    }
+                }
             }
         }
 
@@ -186,6 +210,7 @@ namespace CitySeva
 
         protected void btn_PricePerPlate_Click(object sender, EventArgs e)
         {
+            // BindPricePerPlate();
             PanlPricePerPlate.Visible = true;
             PanlCookingPackag.Visible = false;
 
@@ -193,21 +218,47 @@ namespace CitySeva
 
         protected void btn_cookingPackage_Click(object sender, EventArgs e)
         {
+
             PanlPricePerPlate.Visible = false;
             PanlCookingPackag.Visible = true;
-            DataTable dt = dllVendor.GetIProductIems();
-            if (dt.Rows.Count > 0)
+            DataSet ds = dllVendor.GetSerivceTpye(clsMain.getLoggedUserID(), "Cooking System");
+            if (ds.Tables.Count > 0)
             {
-                RepeaterCooking.DataSource = dt;
-                RepeaterCooking.DataBind();
-            }
-            DataTable dtService = dllVendor.GetIServicesIems();
-            if (dtService.Rows.Count > 0)
-            {
-                chk_serviceCooking.DataSource = dtService;
-                chk_serviceCooking.DataTextField = "Service";
-                chk_serviceCooking.DataValueField = "ServiceId";
-                chk_serviceCooking.DataBind();
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    ddlCooking.SelectedValue = ds.Tables[0].Rows[0]["PerPlatePrice"].ToString();
+                    hidPerPlatePrice.Value = ds.Tables[0].Rows[0]["Id"].ToString();
+                    txtNoOfGustCooking.Text = ds.Tables[0].Rows[0]["NumOfGuest"].ToString();
+                }
+
+
+                if (ds.Tables[1].Rows.Count > 0)
+                {
+                    RepeaterCooking.DataSource = ds.Tables[1];
+                    RepeaterCooking.DataBind();
+                }
+                if (ds.Tables[2].Rows.Count > 0)
+                {
+                    chk_serviceCooking.DataSource = ds.Tables[2];
+                    chk_serviceCooking.DataTextField = "Service";
+                    chk_serviceCooking.DataValueField = "ServiceId";
+                    chk_serviceCooking.DataBind();
+
+                    foreach (ListItem item in chk_serviceCooking.Items)
+                    {
+
+                        foreach (DataRow dr in ds.Tables[2].Rows)
+                        {
+
+
+                            if (item.Value == dr["ServiceOfferedId"].ToString())
+                            {
+                                item.Selected = true;
+                            }
+                        }
+                    }
+
+                }
             }
         }
 
@@ -379,14 +430,113 @@ namespace CitySeva
             }
         }
 
+
+
         protected void btnSaveCookingPackage_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+                string result = "";
+                string Id = dllVendor.SaveServiceAndProduct(0, "Cooking System", ddlCooking.SelectedValue, Convert.ToInt32(txtNoOfGustCooking.Text.Trim()), clsMain.getLoggedUserID());
+                if (!string.IsNullOrEmpty(Id))
+                {
+                    for (int i = 0; i < RepeaterCooking.Items.Count; i++)
+                    {
+                        CheckBox chkItem = (CheckBox)RepeaterCooking.Items[i].FindControl("chkCooking");
+                        TextBox txtItemType = (TextBox)RepeaterCooking.Items[i].FindControl("txtItemTypeCooking");
+                        TextBox txtItemName = (TextBox)RepeaterCooking.Items[i].FindControl("txtItemNameCooking");
+                        HiddenField hiddenItemId = (HiddenField)RepeaterCooking.Items[i].FindControl("hidItemIDCooking");
+
+                        if (chkItem.Checked)
+                        {
+                            result = dllVendor.SaveServiceItem(Convert.ToInt32(Id), hiddenItemId.Value, txtItemType.Text.Trim(), txtItemName.Text.Trim(), chkItem.Checked);
+                        }
+
+
+                    }
+                    List<string> selectedValues = chk_serviceCooking.Items.Cast<ListItem>()
+                                                          .Where(li => li.Selected)
+                                                          .Select(li => li.Value)
+                                                          .ToList();
+
+                    foreach (var item in selectedValues)
+                    {
+
+                        result = dllVendor.SaveServiceOffered(Convert.ToInt32(Id), item);
+                    }
+                }
+                if (result == "Success")
+                {
+                    lblMessageCooking.Text = "Cooking system Saved";
+                }
+                else
+                {
+                    lblMessageCooking.Text = "Cooking system not Saved";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                lblMessageCooking.Text = ex.Message;
+            }
         }
 
         protected void btnSaveProductPerPalte_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+
+
+                string result = "";
+                string Id = dllVendor.SaveServiceAndProduct(0, "Plate System", ddl_PerPlatePrice.SelectedValue, 0, clsMain.getLoggedUserID());
+                if (!string.IsNullOrEmpty(Id))
+                {
+                    for (int i = 0; i < reptPricePerPlate.Items.Count; i++)
+                    {
+                        CheckBox chkItem = (CheckBox)reptPricePerPlate.Items[i].FindControl("chkRequired");
+                        TextBox txtItemType = (TextBox)reptPricePerPlate.Items[i].FindControl("txtItemType");
+                        TextBox txtItemName = (TextBox)reptPricePerPlate.Items[i].FindControl("txtItemName");
+                        HiddenField hiddenItemId = (HiddenField)reptPricePerPlate.Items[i].FindControl("hidItemID");
+
+                        if (chkItem.Checked)
+                        {
+                            result = dllVendor.SaveServiceItem(Convert.ToInt32(Id), hiddenItemId.Value, txtItemType.Text.Trim(), txtItemName.Text.Trim(), chkItem.Checked);
+                        }
+
+
+                    }
+                    List<string> selectedValues = chk_service.Items.Cast<ListItem>()
+                                                          .Where(li => li.Selected)
+                                                          .Select(li => li.Value)
+                                                          .ToList();
+
+                    foreach (var item in selectedValues)
+                    {
+
+                        result = dllVendor.SaveServiceOffered(Convert.ToInt32(Id), item);
+                    }
+                }
+                if (result == "Success")
+                {
+                    lblMessageServicePlateSystem.Text = "Plate system Saved";
+                }
+                else
+                {
+                    lblMessageServicePlateSystem.Text = "Plate system not Saved";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                lblMessageServicePlateSystem.Text = ex.Message;
+            }
 
         }
+
+
+
+
     }
 }

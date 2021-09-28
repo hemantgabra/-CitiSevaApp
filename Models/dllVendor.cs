@@ -73,7 +73,7 @@ namespace CitySeva.Models
             return DataHealper.DbExecuteDataTable("usp_Service_get_list");
 
         }
-        public string SaveVendorImage(int Id,string ImageName, string ImagePath,int addedBy)
+        public string SaveVendorImage(int Id, string ImageName, string ImagePath, int addedBy)
         {
             SqlParameter[] pram = {new SqlParameter("@Id", Id), new SqlParameter("@ImageName", ImageName),
                 new SqlParameter("@ImagePath", ImagePath), new SqlParameter("@AddedBy", addedBy) };
@@ -95,12 +95,55 @@ namespace CitySeva.Models
             SqlParameter[] pram = { new SqlParameter("@UserId", Id) };
             return DataHealper.DbExecuteDataTable("usp_BusinessInfo_get_by_Id", pram);
         }
-        public string SaveBusinessInfo(int Id, string BusinessInfo,   int addedBy)
+        public string SaveBusinessInfo(int Id, string BusinessInfo, int addedBy)
         {
             SqlParameter[] pram = {new SqlParameter("@Id", Id), new SqlParameter("@BusinessInfo", BusinessInfo),
                   new SqlParameter("@AddedBy", addedBy) };
 
             return DataHealper.DbExecuteExecuteScalar("usp_BusinessInfo_add_update", pram).ToString();
+        }
+
+        public string SaveServiceAndProduct(int Id, string ServiceType, string PerPlatePrice, int NumOfGuest, int addedBy)
+        {
+            SqlParameter[] pram = {new SqlParameter("@Id", Id)
+                    , new SqlParameter("@ServiceType", ServiceType)
+                    ,  new SqlParameter("@PerPlatePrice", PerPlatePrice)
+                    ,  new SqlParameter("@NumOfGuest", NumOfGuest)
+                    ,  new SqlParameter("@AddedBy", addedBy)
+
+            };
+
+            return DataHealper.DbExecuteExecuteScalar("[usp_ProductAndServiceInsert]", pram).ToString();
+        }
+        public string SaveServiceItem(Int32 ProductServiceId, string CookingItem, string ItemType, string ItemName, bool IsItem)
+        {
+            SqlParameter[] pram = {new SqlParameter("@ProductServiceId", ProductServiceId)
+                    , new SqlParameter("@CookingItem", CookingItem)
+                    ,  new SqlParameter("@ItemType", ItemType)
+                    ,  new SqlParameter("@ItemName", ItemName)
+                    ,  new SqlParameter("@IsItem", IsItem)
+
+
+            };
+
+            return DataHealper.DbExecuteExecuteScalar("[Usp_ServiceItem_insert]", pram).ToString();
+        }
+
+        public string SaveServiceOffered(Int32 ServiceProductId, string ServiceOfferedId)
+        {
+            SqlParameter[] pram = {new SqlParameter("@ServiceProductId", ServiceProductId)
+                    , new SqlParameter("@ServiceOfferedId", ServiceOfferedId)
+                   
+
+
+            };
+
+            return DataHealper.DbExecuteExecuteScalar("[Usp_ServiceOffered_insert]", pram).ToString();
+        }
+        public DataSet GetSerivceTpye(Int32 Id, string ServiceType)
+        {
+            SqlParameter[] pram = { new SqlParameter("@AddedBy", Id), new SqlParameter("@ServiceType", ServiceType) };
+            return DataHealper.DbExecuteDataSet("Usp_GetPlaterSystes", pram);
         }
     }
 }
