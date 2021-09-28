@@ -86,8 +86,6 @@
 
             $("#ulcategory").on("click", "a", function (e) {
                 e.preventDefault();
-                //var $this = $(this).parent();
-                //  $this.addClass("select").siblings().removeClass("select");
                 $("#selectService").val($(this).text());
                 $("#servicesDiv").hide();
 
@@ -103,8 +101,8 @@
 </head>
 <body>
 
-    <form id="form1" runat="server">
-        <div class="container-fluid p-0" id="footerBottom">
+    <form id="form1" runat="server" class="footerBottom">
+        <div class="container-fluid p-0">
                
         <header class="sticky-top">
             
@@ -204,7 +202,7 @@
               
         
         
-        <div id="home-section pb-5">
+        <div id="home-section pb-5" style="padding-bottom:30px;">
             
            
 
@@ -218,109 +216,6 @@
              
         </div>
 
-        <%--  <div class="footer">
-            <div class="container">
-                <div class="footer_ads">
-                    <div class="footer_ads_box">
-                        <img src="Images/footer_ads.jpg" />
-                    </div>
-                    <div class="footer_ads_box">
-                        <img src="Images/footer_ads1.jpg" />
-                    </div>
-                    <div class="footer_ads_box">
-                        <img src="Images/footer_ads.jpg" />
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="footer_content">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h4><span>Choo</span>se a country</h4>
-                            <ul>
-                                <li>
-                                    <a href="#">Mexico
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Chile
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Argentina
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Brazil
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Colombia
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Peru
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">United States
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-4">
-                            <h4><span>Info</span>rmation</h4>
-                            <ul>
-                                <li>
-                                    <a href="#">Contact Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Terms & Privacy
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Register your business
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">About Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Wedding website
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <div class="col-sm-4">
-                            <h4><span>Foll</span>ow us on</h4>
-                            <ul>
-                                <li>
-                                    <a href="#">Facebook 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Twitter
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Pinterest
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Instagram
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            
-        </div>--%>
         <div class="copyright">
             <p class="text-center">CitiSeva Copyright 2019-2020 </p>
         </div>
