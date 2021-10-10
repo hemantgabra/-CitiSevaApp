@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CitySeva
-{
-
-
-    public partial class Vendor
-    {
-
+namespace CitySeva {
+    
+    
+    public partial class Vendor {
+        
         /// <summary>
         /// Dashboardtab control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Dashboardtab;
-
+        
         /// <summary>
         /// Personaltab control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Personaltab;
-
+        
         /// <summary>
         /// Businesstab control.
         /// </summary>
@@ -40,7 +38,16 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Businesstab;
-
+        
+        /// <summary>
+        /// PaymentType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button PaymentType;
+        
         /// <summary>
         /// Producttab control.
         /// </summary>
@@ -49,7 +56,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Producttab;
-
+        
         /// <summary>
         /// UploadPhotos control.
         /// </summary>
@@ -58,7 +65,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button UploadPhotos;
-
+        
         /// <summary>
         /// BusinessInformationBtn control.
         /// </summary>
@@ -67,7 +74,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BusinessInformationBtn;
-
+        
         /// <summary>
         /// PanlDashboard control.
         /// </summary>
@@ -76,7 +83,232 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanlDashboard;
-
+        
+        /// <summary>
+        /// ProfileImages control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ProfileImages;
+        
+        /// <summary>
+        /// lblPaymentMode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPaymentMode;
+        
+        /// <summary>
+        /// lblBookingAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBookingAmount;
+        
+        /// <summary>
+        /// lblRestAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRestAmount;
+        
+        /// <summary>
+        /// lblCancellationPolicy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCancellationPolicy;
+        
+        /// <summary>
+        /// lblServiceCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblServiceCity;
+        
+        /// <summary>
+        /// chkYesDash control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkYesDash;
+        
+        /// <summary>
+        /// chkTravelDash control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkTravelDash;
+        
+        /// <summary>
+        /// lblBusinessInfoHeading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblBusinessInfoHeading;
+        
+        /// <summary>
+        /// lblBusinessInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblBusinessInfo;
+        
+        /// <summary>
+        /// lblBusinessName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBusinessName;
+        
+        /// <summary>
+        /// lblBusinessAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBusinessAddress;
+        
+        /// <summary>
+        /// hometab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton hometab;
+        
+        /// <summary>
+        /// profiletab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton profiletab;
+        
+        /// <summary>
+        /// lblPlatePrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPlatePrice;
+        
+        /// <summary>
+        /// lblPlateItems control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPlateItems;
+        
+        /// <summary>
+        /// lblCustomPlatePrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCustomPlatePrice;
+        
+        /// <summary>
+        /// lblCookingPriceStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCookingPriceStart;
+        
+        /// <summary>
+        /// lblNumberGuest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNumberGuest;
+        
+        /// <summary>
+        /// lblCustomCooking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCustomCooking;
+        
+        /// <summary>
+        /// divServices control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divServices;
+        
+        /// <summary>
+        /// txtFullName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFullName;
+        
+        /// <summary>
+        /// txtCityform control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCityform;
+        
+        /// <summary>
+        /// txtContactNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactNo;
+        
+        /// <summary>
+        /// txtDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        
         /// <summary>
         /// PanlPersonal control.
         /// </summary>
@@ -85,7 +317,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanlPersonal;
-
+        
         /// <summary>
         /// txtFirstName control.
         /// </summary>
@@ -94,7 +326,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFirstName;
-
+        
         /// <summary>
         /// RequiredFieldValidator1 control.
         /// </summary>
@@ -103,7 +335,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-
+        
         /// <summary>
         /// txtLastName control.
         /// </summary>
@@ -112,7 +344,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLastName;
-
+        
         /// <summary>
         /// RequiredFieldValidator2 control.
         /// </summary>
@@ -121,7 +353,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-
+        
         /// <summary>
         /// txtMobileNumber control.
         /// </summary>
@@ -130,7 +362,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMobileNumber;
-
+        
         /// <summary>
         /// RequiredFieldValidator7 control.
         /// </summary>
@@ -139,7 +371,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
-
+        
         /// <summary>
         /// RegularExpressionValidator1 control.
         /// </summary>
@@ -148,7 +380,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
-
+        
         /// <summary>
         /// txtHomeAddress control.
         /// </summary>
@@ -157,7 +389,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtHomeAddress;
-
+        
         /// <summary>
         /// RequiredFieldValidator3 control.
         /// </summary>
@@ -166,7 +398,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-
+        
         /// <summary>
         /// txtEmailId control.
         /// </summary>
@@ -175,7 +407,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmailId;
-
+        
         /// <summary>
         /// RequiredFieldValidator4 control.
         /// </summary>
@@ -184,7 +416,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
-
+        
         /// <summary>
         /// reg1 control.
         /// </summary>
@@ -193,7 +425,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator reg1;
-
+        
         /// <summary>
         /// txtCity control.
         /// </summary>
@@ -202,7 +434,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCity;
-
+        
         /// <summary>
         /// RequiredFieldValidator5 control.
         /// </summary>
@@ -211,7 +443,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
-
+        
         /// <summary>
         /// txtPincode control.
         /// </summary>
@@ -220,7 +452,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPincode;
-
+        
         /// <summary>
         /// RequiredFieldValidator6 control.
         /// </summary>
@@ -229,7 +461,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
-
+        
         /// <summary>
         /// RegularExpressionValidator2 control.
         /// </summary>
@@ -238,7 +470,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
-
+        
         /// <summary>
         /// ddlState control.
         /// </summary>
@@ -247,7 +479,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlState;
-
+        
         /// <summary>
         /// RequiredFieldValidator8 control.
         /// </summary>
@@ -256,7 +488,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
-
+        
         /// <summary>
         /// btnSubmit control.
         /// </summary>
@@ -265,7 +497,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
-
+        
         /// <summary>
         /// lblmessageContact control.
         /// </summary>
@@ -274,7 +506,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblmessageContact;
-
+        
         /// <summary>
         /// PanlBusinessContact control.
         /// </summary>
@@ -283,7 +515,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanlBusinessContact;
-
+        
         /// <summary>
         /// txtBusinessName control.
         /// </summary>
@@ -292,7 +524,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBusinessName;
-
+        
         /// <summary>
         /// RequiredFieldValidator9 control.
         /// </summary>
@@ -301,7 +533,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
-
+        
         /// <summary>
         /// txtBusinessCategory control.
         /// </summary>
@@ -310,7 +542,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBusinessCategory;
-
+        
         /// <summary>
         /// RequiredFieldValidator10 control.
         /// </summary>
@@ -319,7 +551,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
-
+        
         /// <summary>
         /// txtBusinessAddress control.
         /// </summary>
@@ -328,7 +560,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBusinessAddress;
-
+        
         /// <summary>
         /// RequiredFieldValidator12 control.
         /// </summary>
@@ -337,7 +569,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
-
+        
         /// <summary>
         /// txtBusinessCity control.
         /// </summary>
@@ -346,7 +578,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBusinessCity;
-
+        
         /// <summary>
         /// RequiredFieldValidator13 control.
         /// </summary>
@@ -355,7 +587,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
-
+        
         /// <summary>
         /// chkYes control.
         /// </summary>
@@ -364,7 +596,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkYes;
-
+        
         /// <summary>
         /// chkTravel control.
         /// </summary>
@@ -373,7 +605,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkTravel;
-
+        
         /// <summary>
         /// txtBusinessPinCode control.
         /// </summary>
@@ -382,7 +614,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBusinessPinCode;
-
+        
         /// <summary>
         /// RequiredFieldValidator15 control.
         /// </summary>
@@ -391,7 +623,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
-
+        
         /// <summary>
         /// RegularExpressionValidator5 control.
         /// </summary>
@@ -400,7 +632,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator5;
-
+        
         /// <summary>
         /// txtState control.
         /// </summary>
@@ -409,7 +641,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtState;
-
+        
         /// <summary>
         /// RequiredFieldValidator11 control.
         /// </summary>
@@ -418,7 +650,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
-
+        
         /// <summary>
         /// txtBusinessRunning control.
         /// </summary>
@@ -427,7 +659,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBusinessRunning;
-
+        
         /// <summary>
         /// RequiredFieldValidator14 control.
         /// </summary>
@@ -436,7 +668,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
-
+        
         /// <summary>
         /// btnBusinessContact control.
         /// </summary>
@@ -445,7 +677,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBusinessContact;
-
+        
         /// <summary>
         /// lblmessageBusiness control.
         /// </summary>
@@ -454,7 +686,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblmessageBusiness;
-
+        
         /// <summary>
         /// panlProduct control.
         /// </summary>
@@ -463,7 +695,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel panlProduct;
-
+        
         /// <summary>
         /// btn_PricePerPlate control.
         /// </summary>
@@ -472,7 +704,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_PricePerPlate;
-
+        
         /// <summary>
         /// btn_cookingPackage control.
         /// </summary>
@@ -481,7 +713,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_cookingPackage;
-
+        
         /// <summary>
         /// PanlPricePerPlate control.
         /// </summary>
@@ -490,7 +722,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanlPricePerPlate;
-
+        
         /// <summary>
         /// hidPerPlatePrice control.
         /// </summary>
@@ -499,7 +731,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidPerPlatePrice;
-
+        
         /// <summary>
         /// ddl_PerPlatePrice control.
         /// </summary>
@@ -508,7 +740,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl_PerPlatePrice;
-
+        
         /// <summary>
         /// hidPlateSystemUpdate control.
         /// </summary>
@@ -517,7 +749,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidPlateSystemUpdate;
-
+        
         /// <summary>
         /// reptPricePerPlate control.
         /// </summary>
@@ -526,7 +758,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater reptPricePerPlate;
-
+        
         /// <summary>
         /// txtNoOfGust control.
         /// </summary>
@@ -535,7 +767,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNoOfGust;
-
+        
         /// <summary>
         /// chk_service control.
         /// </summary>
@@ -544,7 +776,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList chk_service;
-
+        
         /// <summary>
         /// btnSaveProductPerPalte control.
         /// </summary>
@@ -553,7 +785,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveProductPerPalte;
-
+        
         /// <summary>
         /// lblMessageServicePlateSystem control.
         /// </summary>
@@ -562,7 +794,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageServicePlateSystem;
-
+        
         /// <summary>
         /// PanlCookingPackag control.
         /// </summary>
@@ -571,7 +803,16 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanlCookingPackag;
-
+        
+        /// <summary>
+        /// hidCookingPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidCookingPrice;
+        
         /// <summary>
         /// ddlCooking control.
         /// </summary>
@@ -580,7 +821,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCooking;
-
+        
         /// <summary>
         /// RepeaterCooking control.
         /// </summary>
@@ -589,7 +830,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterCooking;
-
+        
         /// <summary>
         /// txtNoOfGustCooking control.
         /// </summary>
@@ -598,7 +839,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNoOfGustCooking;
-
+        
         /// <summary>
         /// chk_serviceCooking control.
         /// </summary>
@@ -607,7 +848,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList chk_serviceCooking;
-
+        
         /// <summary>
         /// btnSaveCookingPackage control.
         /// </summary>
@@ -616,7 +857,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveCookingPackage;
-
+        
         /// <summary>
         /// lblMessageCooking control.
         /// </summary>
@@ -625,7 +866,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageCooking;
-
+        
         /// <summary>
         /// PanlUploadPhotos control.
         /// </summary>
@@ -634,7 +875,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanlUploadPhotos;
-
+        
         /// <summary>
         /// imgEdit control.
         /// </summary>
@@ -643,7 +884,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgEdit;
-
+        
         /// <summary>
         /// hidUpdate control.
         /// </summary>
@@ -652,7 +893,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidUpdate;
-
+        
         /// <summary>
         /// hidOldImage control.
         /// </summary>
@@ -661,7 +902,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidOldImage;
-
+        
         /// <summary>
         /// FilePhotosUpload control.
         /// </summary>
@@ -670,7 +911,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FilePhotosUpload;
-
+        
         /// <summary>
         /// reqPhotos control.
         /// </summary>
@@ -679,7 +920,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqPhotos;
-
+        
         /// <summary>
         /// txtImageName control.
         /// </summary>
@@ -688,7 +929,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtImageName;
-
+        
         /// <summary>
         /// RequiredFieldValidator16 control.
         /// </summary>
@@ -697,7 +938,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator16;
-
+        
         /// <summary>
         /// btnUploadPhotos control.
         /// </summary>
@@ -706,7 +947,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUploadPhotos;
-
+        
         /// <summary>
         /// btnCanel control.
         /// </summary>
@@ -715,7 +956,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCanel;
-
+        
         /// <summary>
         /// ReptPhotos control.
         /// </summary>
@@ -724,7 +965,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater ReptPhotos;
-
+        
         /// <summary>
         /// PanlBusinessInfo control.
         /// </summary>
@@ -733,7 +974,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanlBusinessInfo;
-
+        
         /// <summary>
         /// hidBusinessInfo control.
         /// </summary>
@@ -742,7 +983,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidBusinessInfo;
-
+        
         /// <summary>
         /// txtBusinessInfo control.
         /// </summary>
@@ -751,7 +992,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBusinessInfo;
-
+        
         /// <summary>
         /// RequiredFieldValidator17 control.
         /// </summary>
@@ -760,7 +1001,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator17;
-
+        
         /// <summary>
         /// btnSaveBusinessInfo control.
         /// </summary>
@@ -769,7 +1010,7 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveBusinessInfo;
-
+        
         /// <summary>
         /// lblMessageBusinessInfo control.
         /// </summary>
@@ -778,5 +1019,77 @@ namespace CitySeva
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageBusinessInfo;
+        
+        /// <summary>
+        /// PanlPaymentType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanlPaymentType;
+        
+        /// <summary>
+        /// hidPaymentType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidPaymentType;
+        
+        /// <summary>
+        /// ddlPaymentMode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPaymentMode;
+        
+        /// <summary>
+        /// ddlBookingAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBookingAmount;
+        
+        /// <summary>
+        /// ddlProgramDay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProgramDay;
+        
+        /// <summary>
+        /// ddlBookingOrderCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBookingOrderCancel;
+        
+        /// <summary>
+        /// btnSavePaymentMode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSavePaymentMode;
+        
+        /// <summary>
+        /// lblMessagePaymentMode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessagePaymentMode;
     }
 }

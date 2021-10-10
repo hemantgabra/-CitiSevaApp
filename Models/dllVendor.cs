@@ -115,13 +115,16 @@ namespace CitySeva.Models
 
             return DataHealper.DbExecuteExecuteScalar("[usp_ProductAndServiceInsert]", pram).ToString();
         }
-        public string SaveServiceItem(Int32 ProductServiceId, string CookingItem, string ItemType, string ItemName, bool IsItem)
+        public string SaveServiceItem(int ItemId, Int32 ProductServiceId, string CookingItem, string ItemType, string ItemName, bool IsItem)
         {
-            SqlParameter[] pram = {new SqlParameter("@ProductServiceId", ProductServiceId)
+            SqlParameter[] pram = {
+                   new SqlParameter("@ItemId", ItemId)
+                ,new SqlParameter("@ProductServiceId", ProductServiceId)
                     , new SqlParameter("@CookingItem", CookingItem)
                     ,  new SqlParameter("@ItemType", ItemType)
                     ,  new SqlParameter("@ItemName", ItemName)
                     ,  new SqlParameter("@IsItem", IsItem)
+
 
 
             };
@@ -133,7 +136,7 @@ namespace CitySeva.Models
         {
             SqlParameter[] pram = {new SqlParameter("@ServiceProductId", ServiceProductId)
                     , new SqlParameter("@ServiceOfferedId", ServiceOfferedId)
-                   
+
 
 
             };
@@ -144,6 +147,33 @@ namespace CitySeva.Models
         {
             SqlParameter[] pram = { new SqlParameter("@AddedBy", Id), new SqlParameter("@ServiceType", ServiceType) };
             return DataHealper.DbExecuteDataSet("Usp_GetPlaterSystes", pram);
+        }
+
+        public DataSet GetVendorProfileData(Int32 VendorId)
+        {
+            SqlParameter[] pram = { new SqlParameter("@VendorId", VendorId) };
+            return DataHealper.DbExecuteDataSet("usp_GetVendorDashBoard", pram);
+        }
+        public DataTable GetVendorPaymentData(int VendorId)
+        {
+            SqlParameter[] pram = { new SqlParameter("@AddedBy", VendorId) };
+            return DataHealper.DbExecuteDataTable("usp_PaymentType_GetAll", pram);
+        }
+        public string SavePaymentInfo(int PaymentId, string PaymentMode, string BookingAmount, string RestAmount, string OrderCancellled, int AddedBy)
+        {
+            SqlParameter[] pram = {
+                   new SqlParameter("@PaymentId", PaymentId)
+                ,new SqlParameter("@PaymentMode", PaymentMode)
+                    , new SqlParameter("@BookingAmount", BookingAmount)
+                    ,  new SqlParameter("@RestAmount", RestAmount)
+                    ,  new SqlParameter("@OrderCancellled", OrderCancellled)
+                    ,  new SqlParameter("@AddedBy", AddedBy)
+
+
+
+            };
+
+            return DataHealper.DbExecuteExecuteScalar("[usp_PaymentType_insertUpdate]", pram).ToString();
         }
     }
 }

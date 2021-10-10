@@ -31,8 +31,10 @@ namespace CitySeva
                 Dashboardtab.Attributes.Add("class", "nav-link active");
                 PanlDashboard.Visible = true;
                 PanlPricePerPlate.Visible = true;
+                DisplayImages();
                 GetVendorContactDetails(clsMain.getLoggedUserID());
                 GetVendorBusinessDetails(clsMain.getLoggedUserID());
+
             }
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -116,8 +118,89 @@ namespace CitySeva
         {
             ShowHidePanel(PanlDashboard, true);
             LinkActiveInActive(Dashboardtab, "active");
+            DisplayImages();
+        }
+
+        private void DisplayImages()
+        {
+
+            DataSet ds = dllVendor.GetVendorProfileData(clsMain.getLoggedUserID());
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+
+                    string img = "";
+                    string img1 = "<img class='xzoom5' id='xzoom-magnific'   width='400px' height='250' src='Uploads/" + ds.Tables[0].Rows[0]["ImagePath"].ToString() + "' xoriginal='Uploads/" + ds.Tables[0].Rows[0]["ImagePath"].ToString() + "' />" + "<div class='xzoom-thumbs'>";
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        img += "<a href='Uploads/" + ds.Tables[0].Rows[i]["ImagePath"].ToString() + "'>"
+                              + "<img class='xzoom-gallery5' width='80' height='60' src='Uploads/" + ds.Tables[0].Rows[i]["ImagePath"].ToString() + "' title='The description goes here'></a>";
+                    }
+                    img1 = img1 + img + "</div>";
+
+                    //string htmlImage = "<img class='xzoom5' id='xzoom-magnific' src='images/gallery/preview/01_b_car.jpg' xoriginal='images/gallery/original/01_b_car.jpg' />"
+                    //                                    + "<div class='xzoom-thumbs'>"
+                    //                                        + "<a href='images/gallery/original/01_b_car.jpg'>"
+                    //                                            + "<img class='xzoom-gallery5' width='80' src='images/gallery/thumbs/01_b_car.jpg' xpreview='images/gallery/preview/01_b_car.jpg' title='The description goes here'></a>"
+                    //                                        + "<a href='images/gallery/original/02_o_car.jpg'>"
+                    //                                            + "<img class='xzoom-gallery5' width='80' src='images/gallery/preview/02_o_car.jpg' title='The description goes here'></a>"
+                    //                                        + "<a href='images/gallery/original/03_r_car.jpg'>"
+                    //                                            + "<img class='xzoom-gallery5' width='80' src='images/gallery/preview/03_r_car.jpg' title='The description goes here'></a>"
+                    //                                        + "<a href='images/gallery/original/04_g_car.jpg'>"
+                    //                                            + "<img class='xzoom-gallery5' width='80' src='images/gallery/preview/04_g_car.jpg' title='The description goes here'></a>"
+                    //                                    + "</div>";
+                    ProfileImages.InnerHtml = img1;
+                }
+                if (ds.Tables[1].Rows.Count > 0)
+                {
+                    lblBusinessName.Text = ds.Tables[1].Rows[0]["business_name"].ToString();
+                    lblBusinessAddress.Text = ds.Tables[1].Rows[0]["business_address"].ToString();
+                    lblPaymentMode.Text= ds.Tables[1].Rows[0]["PaymentMode"].ToString();
+                    lblBookingAmount.Text = ds.Tables[1].Rows[0]["BookingAmount"].ToString();
+                    lblRestAmount.Text = ds.Tables[1].Rows[0]["RestAmount"].ToString();
+                    lblCancellationPolicy.Text = ds.Tables[1].Rows[0]["OrderCancellled"].ToString();
+                    lblBusinessInfoHeading.InnerText = ds.Tables[1].Rows[0]["business_name"].ToString();
+                    lblBusinessInfo.InnerText= ds.Tables[1].Rows[0]["Businessinfo"].ToString();
+                    lblServiceCity.Text= ds.Tables[1].Rows[0]["city"].ToString();
+                    chkYesDash.Checked=ds.Tables[1].Rows[0]["other_city"].ToString()=="True"?true:false;
+                    chkTravelDash.Checked = ds.Tables[1].Rows[0]["travel_and_stay"].ToString() == "True" ? true : false;                     
+
+
+
+                }
+                if (ds.Tables[2].Rows.Count > 0)
+                {
+                    hometab.InnerText = ds.Tables[2].Rows[0]["ServiceType"].ToString();
+                    profiletab.InnerText = ds.Tables[2].Rows[1]["ServiceType"].ToString();
+
+                    string[] strServices = ds.Tables[2].Rows[0]["services"].ToString().Split(',');
+                    string chkServices = "";
+                    if (strServices.Length > 0)
+                    {
+                        for (int i = 0; i < strServices.Length; i++)
+                        {
+                            chkServices+= "<div class='form-check'>"
+                                           + "<input class='form-check-input' type='checkbox' checked='true' value='' id='defaultCheck1'>"
+                                           + "<label class='form-check-label' for='defaultCheck1'>"+strServices[i].ToString()+"</label>"
+                                           + "</div>";
+                        }
+                    }
+                    divServices.InnerHtml = chkServices;
+
+                    lblPlatePrice.InnerText = ds.Tables[2].Rows[0]["PerPlatePrice"].ToString();
+                    lblPlateItems.InnerText = ds.Tables[2].Rows[0]["Items"].ToString();
+                    lblCookingPriceStart.InnerText= ds.Tables[2].Rows[1]["PerPlatePrice"].ToString();
+                    lblNumberGuest.InnerText = ds.Tables[2].Rows[1]["NumOfGuest"].ToString();
+
+                }
+            }
+
 
         }
+
+
+
 
         protected void Personaltab_Click(object sender, EventArgs e)
         {
@@ -138,21 +221,65 @@ namespace CitySeva
             LinkActiveInActive(Producttab, "active");
             ShowHidePanel(panlProduct, true);
 
-            DataSet ds = dllVendor.GetSerivceTpye(clsMain.getLoggedUserID(), "Plate System");
+            GetPricePerPlate();
+        }
 
+        public void LinkActiveInActive(Button btn, string isActive)
+        {
+
+
+
+            Dashboardtab.CssClass = "nav-link";
+            Personaltab.CssClass = "nav-link";
+            Businesstab.CssClass = "nav-link";
+            Producttab.CssClass = "nav-link";
+            UploadPhotos.CssClass = "nav-link";
+            PaymentType.CssClass = "nav-link";
+            BusinessInformationBtn.CssClass = "nav-link";
+            btn.CssClass = "nav-link " + isActive;
+
+
+
+        }
+        public void ShowHidePanel(Panel pnl, bool show)
+        {
+            PanlDashboard.Visible = false;
+            PanlPersonal.Visible = false;
+            PanlBusinessContact.Visible = false;
+            panlProduct.Visible = false;
+            PanlUploadPhotos.Visible = false;
+            PanlBusinessInfo.Visible = false;
+            PanlPaymentType.Visible = false;
+            lblMessagePaymentMode.Text = "";
+            lblmessageBusiness.Text = "";
+            lblmessageContact.Text = "";
+            pnl.Visible = show;
+
+        }
+
+
+        protected void btn_PricePerPlate_Click(object sender, EventArgs e)
+        {
+            // BindPricePerPlate();
+            PanlPricePerPlate.Visible = true;
+            PanlCookingPackag.Visible = false;
+            GetPricePerPlate();
+
+        }
+
+        private void GetPricePerPlate()
+        {
+            DataSet ds = dllVendor.GetSerivceTpye(clsMain.getLoggedUserID(), "Plate System");
             if (ds.Tables[0].Rows.Count > 0)
             {
                 ddl_PerPlatePrice.SelectedValue = ds.Tables[0].Rows[0]["PerPlatePrice"].ToString();
                 hidPerPlatePrice.Value = ds.Tables[0].Rows[0]["Id"].ToString();
             }
-
-
             if (ds.Tables[1].Rows.Count > 0)
             {
                 reptPricePerPlate.DataSource = ds.Tables[1];
                 reptPricePerPlate.DataBind();
             }
-
             if (ds.Tables[2].Rows.Count > 0)
             {
                 chk_service.DataSource = ds.Tables[2];
@@ -172,48 +299,10 @@ namespace CitySeva
                         {
                             item.Selected = true;
                         }
+
                     }
                 }
             }
-        }
-
-        public void LinkActiveInActive(Button btn, string isActive)
-        {
-
-
-
-            Dashboardtab.CssClass = "nav-link";
-            Personaltab.CssClass = "nav-link";
-            Businesstab.CssClass = "nav-link";
-            Producttab.CssClass = "nav-link";
-            UploadPhotos.CssClass = "nav-link";
-            BusinessInformationBtn.CssClass = "nav-link";
-            btn.CssClass = "nav-link " + isActive;
-
-
-
-        }
-        public void ShowHidePanel(Panel pnl, bool show)
-        {
-            PanlDashboard.Visible = false;
-            PanlPersonal.Visible = false;
-            PanlBusinessContact.Visible = false;
-            panlProduct.Visible = false;
-            PanlUploadPhotos.Visible = false;
-            PanlBusinessInfo.Visible = false;
-            lblmessageBusiness.Text = "";
-            lblmessageContact.Text = "";
-            pnl.Visible = show;
-
-        }
-
-
-        protected void btn_PricePerPlate_Click(object sender, EventArgs e)
-        {
-            // BindPricePerPlate();
-            PanlPricePerPlate.Visible = true;
-            PanlCookingPackag.Visible = false;
-
         }
 
         protected void btn_cookingPackage_Click(object sender, EventArgs e)
@@ -221,13 +310,20 @@ namespace CitySeva
 
             PanlPricePerPlate.Visible = false;
             PanlCookingPackag.Visible = true;
+            GetCookingPacking();
+        }
+
+        private void GetCookingPacking()
+        {
+
+
             DataSet ds = dllVendor.GetSerivceTpye(clsMain.getLoggedUserID(), "Cooking System");
             if (ds.Tables.Count > 0)
             {
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     ddlCooking.SelectedValue = ds.Tables[0].Rows[0]["PerPlatePrice"].ToString();
-                    hidPerPlatePrice.Value = ds.Tables[0].Rows[0]["Id"].ToString();
+                    hidCookingPrice.Value = ds.Tables[0].Rows[0]["Id"].ToString();
                     txtNoOfGustCooking.Text = ds.Tables[0].Rows[0]["NumOfGuest"].ToString();
                 }
 
@@ -260,6 +356,7 @@ namespace CitySeva
 
                 }
             }
+
         }
 
         protected void UploadPhotos_Click(object sender, EventArgs e)
@@ -283,13 +380,15 @@ namespace CitySeva
             string imgPath = "Uploads/" + imgName;
             //get the size in bytes that  
 
-            int imgSize = FilePhotosUpload.PostedFile.ContentLength;
+            // int imgSize = FilePhotosUpload.PostedFile.ContentLength;
+            decimal imgSize = Math.Round(((decimal)FilePhotosUpload.PostedFile.ContentLength / (decimal)1024), 2);
+
 
             //validates the posted file before saving  
             if (FilePhotosUpload.PostedFile != null && FilePhotosUpload.PostedFile.FileName != "")
             {
                 // 10240 KB means 10MB, You can change the value based on your requirement  
-                if (FilePhotosUpload.PostedFile.ContentLength > 12000)
+                if (imgSize > 10240)
                 {
                     Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('File is too big.')", true);
                 }
@@ -438,7 +537,8 @@ namespace CitySeva
             {
 
                 string result = "";
-                string Id = dllVendor.SaveServiceAndProduct(0, "Cooking System", ddlCooking.SelectedValue, Convert.ToInt32(txtNoOfGustCooking.Text.Trim()), clsMain.getLoggedUserID());
+                int serviceId = hidCookingPrice.Value == "" ? 0 : Convert.ToInt32(hidCookingPrice.Value);
+                string Id = dllVendor.SaveServiceAndProduct(serviceId, "Cooking System", ddlCooking.SelectedValue, Convert.ToInt32(txtNoOfGustCooking.Text.Trim()), clsMain.getLoggedUserID());
                 if (!string.IsNullOrEmpty(Id))
                 {
                     for (int i = 0; i < RepeaterCooking.Items.Count; i++)
@@ -450,7 +550,7 @@ namespace CitySeva
 
                         if (chkItem.Checked)
                         {
-                            result = dllVendor.SaveServiceItem(Convert.ToInt32(Id), hiddenItemId.Value, txtItemType.Text.Trim(), txtItemName.Text.Trim(), chkItem.Checked);
+                            result = dllVendor.SaveServiceItem(Convert.ToInt32(hiddenItemId.Value), Convert.ToInt32(Id), hiddenItemId.Value, txtItemType.Text.Trim(), txtItemName.Text.Trim(), chkItem.Checked);
                         }
 
 
@@ -469,6 +569,7 @@ namespace CitySeva
                 if (result == "Success")
                 {
                     lblMessageCooking.Text = "Cooking system Saved";
+                    GetCookingPacking();
                 }
                 else
                 {
@@ -490,7 +591,8 @@ namespace CitySeva
 
 
                 string result = "";
-                string Id = dllVendor.SaveServiceAndProduct(0, "Plate System", ddl_PerPlatePrice.SelectedValue, 0, clsMain.getLoggedUserID());
+                int serviceId = hidPerPlatePrice.Value == "" ? 0 : Convert.ToInt32(hidPerPlatePrice.Value);
+                string Id = dllVendor.SaveServiceAndProduct(serviceId, "Plate System", ddl_PerPlatePrice.SelectedValue, 0, clsMain.getLoggedUserID());
                 if (!string.IsNullOrEmpty(Id))
                 {
                     for (int i = 0; i < reptPricePerPlate.Items.Count; i++)
@@ -502,7 +604,7 @@ namespace CitySeva
 
                         if (chkItem.Checked)
                         {
-                            result = dllVendor.SaveServiceItem(Convert.ToInt32(Id), hiddenItemId.Value, txtItemType.Text.Trim(), txtItemName.Text.Trim(), chkItem.Checked);
+                            result = dllVendor.SaveServiceItem(Convert.ToInt32(hiddenItemId.Value), Convert.ToInt32(Id), hiddenItemId.Value, txtItemType.Text.Trim(), txtItemName.Text.Trim(), chkItem.Checked);
                         }
 
 
@@ -521,6 +623,7 @@ namespace CitySeva
                 if (result == "Success")
                 {
                     lblMessageServicePlateSystem.Text = "Plate system Saved";
+                    GetPricePerPlate();
                 }
                 else
                 {
@@ -535,8 +638,58 @@ namespace CitySeva
 
         }
 
+        protected void PaymentType_Click(object sender, EventArgs e)
+        {
+            LinkActiveInActive(PaymentType, "active");
+            ShowHidePanel(PanlPaymentType, true);
 
+            BindPaymentInfo();
+        }
 
+        public void BindPaymentInfo()
+        {
+            DataTable dt = dllVendor.GetVendorPaymentData(clsMain.getLoggedUserID());
+            if (dt.Rows.Count > 0)
+            {
+                ddlPaymentMode.SelectedValue = dt.Rows[0]["PaymentMode"].ToString();
+                ddlBookingAmount.SelectedValue = dt.Rows[0]["BookingAmount"].ToString();
+                ddlProgramDay.SelectedValue = dt.Rows[0]["RestAmount"].ToString();
+                ddlBookingOrderCancel.SelectedValue = dt.Rows[0]["OrderCancellled"].ToString();
+                hidPaymentType.Value = dt.Rows[0]["PaymentId"].ToString();
+            }
+        }
+        protected void btnSavePaymentMode_Click(object sender, EventArgs e)
+        {
 
+            try
+            {
+
+                string result = "";
+                if (string.IsNullOrEmpty(hidPaymentType.Value))
+                {
+                    result = dllVendor.SavePaymentInfo(0, ddlPaymentMode.SelectedValue, ddlBookingAmount.SelectedValue, ddlProgramDay.SelectedValue, ddlBookingOrderCancel.SelectedValue, clsMain.getLoggedUserID());
+
+                }
+                else
+                {
+                    result = dllVendor.SavePaymentInfo(Convert.ToInt32(hidPaymentType.Value), ddlPaymentMode.SelectedValue, ddlBookingAmount.SelectedValue, ddlProgramDay.SelectedValue, ddlBookingOrderCancel.SelectedValue, clsMain.getLoggedUserID());
+                }
+                if (result == "Success")
+                {
+                    lblMessagePaymentMode.Text = "Paymnet information saved";
+                    hidPaymentType.Value = "";
+                    BindPaymentInfo();
+                }
+                else
+                {
+                    lblMessagePaymentMode.Text = "Paymnet not saved";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                lblMessagePaymentMode.Text = ex.Message;
+            }
+        }
     }
 }
