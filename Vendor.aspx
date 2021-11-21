@@ -1,9 +1,105 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CitySeva.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="Vendor.aspx.cs" Inherits="CitySeva.Vendor" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
 
+
+        function openDilog() {
+
+            $('#programeModal').modal('show');
+        }
+
+
+
+
+
+
+    </script>
     <div class="container">
         <div class="row">
+            <div class="modal fade request_price" id="programeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Booking Order</h5>
+                            <%-- <span>Fill this form and Elysian Weddings will contact you shortly. All the information provided will be treated confidentially.</span>--%>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <div class="col-4">Customer Name</div>
+                                <div class="col-4">
+                                    <asp:Label ID="lblProgrammeCustomerName" Text="sdj" runat="server"></asp:Label>
+                                </div>
+
+                                <div class="col-4">Programme Name</div>
+                                <div class="col-4">
+                                    <asp:Label ID="lblProgrammeName" Text="sdj" runat="server"></asp:Label>
+                                </div>
+
+                                <div class="col-4">Programme Date</div>
+                                <div class="col-4">
+                                    <asp:Label ID="lblProgrammeDate" runat="server"></asp:Label>
+                                </div>
+                                <div class="col-4">Programme Address</div>
+                                <div class="col-4">
+                                    <asp:Label ID="lblProgrameAddress" runat="server"></asp:Label>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <asp:Repeater ID="repeaterProgramePopup" runat="server">
+                                    <HeaderTemplate>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>Worker Name
+                                                </th>
+                                                <th>Post
+                                                </th>
+                                                <th>Select
+                                                </th>
+
+                                            </tr>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+
+                                        <tr>
+
+                                            <td>
+                                                <asp:Label ID="lblWorkerName" runat="server" Text='<%#Eval("WorkerName")%>'></asp:Label>
+
+
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="lblWorkerPost" runat="server" Text='<%#Eval("WorkerPost")%>'></asp:Label>
+
+
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label8" runat="server" Font-Bold="true" Text="&#10003;"></asp:Label>
+                                                <%-- <asp:CheckBox ID="chkWorkerName" runat="server" />
+                                                    <asp:HiddenField ID="hdnWorkerId" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "Id")  %>' />--%>
+                                            </td>
+
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="nav flex-column nav-pills col-2 pt-3 vendor-reg-left" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                 <asp:Button ID="Dashboardtab" class="nav-link" OnClick="Dashboardtab_Click" Text="Dashboard" runat="server"></asp:Button>
@@ -13,6 +109,9 @@
                 <asp:Button ID="Producttab" class="nav-link" OnClick="Producttab_Click" Text="Add Service / Product" runat="server"></asp:Button>
                 <asp:Button ID="UploadPhotos" class="nav-link" OnClick="UploadPhotos_Click" Text="Upload Photos" runat="server"></asp:Button>
                 <asp:Button ID="BusinessInformationBtn" class="nav-link" OnClick="BusinessInformationBtn_Click" Text="Business Information" runat="server"></asp:Button>
+                <asp:Button ID="btnBookingOrderTab" class="nav-link" OnClick="btnBookingOrderTab_Click" Text="Booking order" runat="server"></asp:Button>
+                <asp:Button ID="btnWorkers" class="nav-link" Text="Workers" OnClick="btnWorkers_Click" runat="server"></asp:Button>
+                <asp:Button ID="btnCustomerEnquery" class="nav-link" Text="Custome Enquery" OnClick="btnCustomerEnquery_Click" runat="server"></asp:Button>
             </div>
 
 
@@ -202,27 +301,27 @@
                                             <span>Fill this form and vendor will contact you shortly. All information provided will be treated confidently. </span>
                                         </div>
                                         <div class="form-group">
-                                            <asp:TextBox ID="txtFullName" CssClass="form-control"  placeholder="Full Name" runat="server"></asp:TextBox>
-                                        </div>
-                                     <div class="form-group">
-                                            <asp:TextBox ID="txtCityform" CssClass="form-control"  placeholder="City" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtFullName" CssClass="form-control" placeholder="Full Name" runat="server"></asp:TextBox>
                                         </div>
                                         <div class="form-group">
-                                            <asp:TextBox ID="txtContactNo" CssClass="form-control"  placeholder="Contact No." runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtCityform" CssClass="form-control" placeholder="City" runat="server"></asp:TextBox>
                                         </div>
                                         <div class="form-group">
-                                            <asp:TextBox ID="txtDate" CssClass="form-control"  placeholder="Date" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtContactNo" CssClass="form-control" placeholder="Contact No." runat="server"></asp:TextBox>
                                         </div>
-                                         <div class="form-group">
-                                         <p>
-                                             By clicking Request Pricing you agree to sign up and accept CitiSeva's <a href="#"> Terms of use</a>
-                                         </p>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtDate" CssClass="form-control" placeholder="Date" runat="server"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group">
+                                            <p>
+                                                By clicking Request Pricing you agree to sign up and accept CitiSeva's <a href="#">Terms of use</a>
+                                            </p>
                                         </div>
                                         <div class="form-group text-light">
-                                          <button type="button" class="btn btn-block bg-primary " >Submit</button>
-                                         </div>
+                                            <button type="button" class="btn btn-block bg-primary ">Submit</button>
+                                        </div>
                                     </div>
-                                   
+
 
                                 </div>
                             </div>
@@ -378,13 +477,15 @@
                             </div>
                         </div>
                     </asp:Panel>
-                    <asp:Panel ID="panlProduct" Visible="false" runat="server">
+                    <asp:Panel ID="panlProduct" Width="100%" Visible="false" runat="server">
                         <asp:Button ID="btn_PricePerPlate" Text="Per Plate System" OnClick="btn_PricePerPlate_Click" CssClass=" btn btn-primary" runat="server" />
                         <asp:Button ID="btn_cookingPackage" Text="Cooking Package" OnClick="btn_cookingPackage_Click" CssClass=" btn btn-primary" runat="server" />
 
                         <asp:Panel ID="PanlPricePerPlate" Visible="false" runat="server">
                             <div id="Product">
                                 <h3>Per Plate System</h3>
+                                <div id="divPlateSystem" runat="server" class="form-group">
+                                </div>
                                 <div class="form-group">
                                     <asp:HiddenField ID="hidPerPlatePrice" runat="server" />
                                     <label for="businesssName">Per Plate Price</label>
@@ -398,9 +499,53 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="businesssName"></label>
+                                    <label for="businesssName">Vegetable Items</label>
                                     <asp:HiddenField ID="hidPlateSystemUpdate" runat="server" />
                                     <asp:Repeater ID="reptPricePerPlate" runat="server">
+                                        <HeaderTemplate>
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>Cooking Items
+                                                    </th>
+                                                    <th>Item Type
+                                                    </th>
+                                                    <th>Item Name
+                                                    </th>
+
+                                                </tr>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+
+                                            <tr>
+
+                                                <td>
+                                                    <asp:CheckBox Text='<%#Eval("Item")%>' Checked='<%#Eval("IsItem").ToString()=="1"?true:false%>' CssClass="form-control" ID="chkRequired" runat="server" />
+                                                    <asp:HiddenField ID="hidItemID" Value='<%#Eval("ItemId")%>' runat="server" />
+                                                    <asp:HiddenField ID="hidItemIdUpdate" Value='<%#Eval("ItemId")%>' runat="server" />
+
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtItemType" Text='<%#Eval("ItemType")%>' CssClass="form-control" runat="server"></asp:TextBox>
+
+                                                </td>
+                                                <td>
+
+                                                    <asp:TextBox ID="txtItemName" Text='<%#Eval("ItemName")%>' CssClass="form-control" runat="server"></asp:TextBox>
+                                                </td>
+
+                                            </tr>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            </table>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="businesssName">Non Vegetable Items</label><asp:CheckBox ID="chkNonVegePlate" Text="Display" runat="server" />
+                                    <asp:HiddenField ID="HiddenField1" runat="server" />
+                                    <asp:Repeater ID="repNonPriceVegitable" runat="server">
                                         <HeaderTemplate>
                                             <table class="table table-bordered">
                                                 <tr>
@@ -507,6 +652,50 @@
                                                 <td>
 
                                                     <asp:TextBox ID="txtItemNameCooking" Text='<%#Eval("ItemName")%>' CssClass="form-control" runat="server"></asp:TextBox>
+                                                </td>
+
+                                            </tr>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            </table>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="businesssName">Non Vegetable Items</label><asp:CheckBox ID="chkNonVegeCooking" Text="Display" runat="server" />
+                                    <asp:HiddenField ID="HiddenField2" runat="server" />
+                                    <asp:Repeater ID="rptCookingNonVegetables" runat="server">
+                                        <HeaderTemplate>
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>Cooking Items
+                                                    </th>
+                                                    <th>Item Type
+                                                    </th>
+                                                    <th>Item Name
+                                                    </th>
+
+                                                </tr>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+
+                                            <tr>
+
+                                                <td>
+                                                    <asp:CheckBox Text='<%#Eval("Item")%>' Checked='<%#Eval("IsItem").ToString()=="1"?true:false%>' CssClass="form-control" ID="chkRequired" runat="server" />
+                                                    <asp:HiddenField ID="hidItemID" Value='<%#Eval("ItemId")%>' runat="server" />
+                                                    <asp:HiddenField ID="hidItemIdUpdate" Value='<%#Eval("ItemId")%>' runat="server" />
+
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtItemType" Text='<%#Eval("ItemType")%>' CssClass="form-control" runat="server"></asp:TextBox>
+
+                                                </td>
+                                                <td>
+
+                                                    <asp:TextBox ID="txtItemName" Text='<%#Eval("ItemName")%>' CssClass="form-control" runat="server"></asp:TextBox>
                                                 </td>
 
                                             </tr>
@@ -664,7 +853,436 @@
                         </div>
 
                     </asp:Panel>
+                    <asp:Panel ID="PanlOrderBooking" Visible="false" runat="server">
+                        <asp:HiddenField ID="hidUpdateBookingOrder" Value="0" runat="server" />
+                        <div id="OrderBooking">
+                            <h3>Order Booking</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="exampleInputEmail1">Customer Name</label>
+                                    <asp:TextBox ID="txtCustomerName" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ValidationGroup="OrderBooking" ControlToValidate="txtCustomerName" Display="Dynamic" ForeColor="Red" ErrorMessage="Customer name is required" runat="server"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="col">
+                                    <label for="exampleInputPassword1">Customer Contact</label>
+                                    <asp:TextBox ID="txtCustomerContact" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ValidationGroup="OrderBooking" ControlToValidate="txtCustomerContact" Display="Dynamic" ForeColor="Red" ErrorMessage="Customer contact is required" runat="server"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ValidationGroup="OrderBooking" runat="server" Display="Dynamic" ForeColor="Red" ControlToValidate="txtCustomerContact" ValidationExpression="^[0-9]{0,10}$" ErrorMessage="Customer contact is not valid"></asp:RegularExpressionValidator>
+                                </div>
+                            </div>
 
+                            <div class="row mt-4">
+                                <div class="col">
+                                    <label for="mobileNumber">Programe Date</label>
+                                    <asp:TextBox ID="txtProgrameDate" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" ValidationGroup="OrderBooking" ControlToValidate="txtProgrameDate" Display="Dynamic" ForeColor="Red" ErrorMessage="Programe Date number is required" runat="server"></asp:RequiredFieldValidator>
+
+                                </div>
+                                <div class="col">
+                                    <label for="homeAddress">Programe Name</label>
+                                    <asp:TextBox ID="txtProgrameName" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" ValidationGroup="OrderBooking" ControlToValidate="txtProgrameName" Display="Dynamic" ForeColor="Red" ErrorMessage="Programe Name is required" runat="server"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col">
+                                    <label for="emailId">Programe Address</label>
+                                    <asp:TextBox ID="txtProgrameAddress" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" ValidationGroup="OrderBooking" ControlToValidate="txtProgrameAddress" Display="Dynamic" ForeColor="Red" ErrorMessage="Programe Address is required" runat="server"></asp:RequiredFieldValidator>
+
+                                </div>
+                                <div class="col">
+                                    <label for="City">Programe City</label>
+                                    <asp:TextBox ID="txtProgrameCity" runat="server" MaxLength="50" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" ValidationGroup="OrderBooking" ControlToValidate="txtProgrameCity" Display="Dynamic" ForeColor="Red" ErrorMessage="Programe city is required" runat="server"></asp:RequiredFieldValidator>
+                                </div>
+
+
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col">
+                                    <asp:Button ID="btnSameBookingOrder" class="btn btn-primary" ValidationGroup="OrderBooking" OnClick="btnSameBookingOrder_Click" runat="server" Text="Submit" />
+
+                                    <asp:Button ID="btnSameBookingOrderCancel" class="btn btn-primary" OnClick="btnSameBookingOrderCancel_Click" runat="server" Text="Cancel" />
+
+                                    <br />
+                                    <asp:Label ID="lblBookingOrderMessage" runat="server"></asp:Label>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div id="OrderBookingRep" class="row mt-3">
+                            <div class="col">
+                                <asp:Repeater ID="rptBookingOrder" OnItemCommand="rptBookingOrder_ItemCommand" runat="server">
+                                    <HeaderTemplate>
+                                        <table class="table table-bordered">
+
+                                            <tr>
+                                                <td>
+                                                    <strong>S.NO</strong>
+                                                </td>
+                                                <td>
+                                                    <strong>CustomerName</strong>
+                                                </td>
+                                                <td>
+                                                    <strong>Contact</strong>
+                                                </td>
+                                                <td>
+                                                    <strong>Programe Date</strong>
+                                                </td>
+                                                <td>
+                                                    <strong>Programe Name</strong>
+                                                </td>
+                                                <td>
+                                                    <strong>Programe Address</strong>
+                                                </td>
+                                                <td>
+                                                    <strong>Programe City</strong>
+                                                </td>
+                                                <td>
+                                                    <strong>BookingStatus</strong>
+                                                </td>
+                                                <td>
+                                                    <strong>Action</strong>
+                                                </td>
+                                            </tr>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="Label6" runat="server" Text='<%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>'></asp:Label>
+
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label1" runat="server" Text='<%#Eval("CustomerName") %>'></asp:Label>
+
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="lblImageName" runat="server" Text='<%#Eval("Contact") %>'></asp:Label>
+
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label2" runat="server" Text='<%#Eval("ProgrameDate") %>'></asp:Label>
+
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label3" runat="server" Text='<%#Eval("ProgrameName") %>'></asp:Label>
+
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label4" runat="server" Text='<%#Eval("ProgrameAddress") %>'></asp:Label>
+
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label5" runat="server" Text='<%#Eval("ProgrameCity") %>'></asp:Label>
+
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label7" runat="server" Text='<%#Eval("BookingStatus") %>'></asp:Label>
+
+                                            </td>
+
+                                            <td>
+                                                <asp:Button ID="btnEdit" Text="edit" CommandArgument='<%#Eval("Id")%>' CssClass="btn btn-dark" CommandName="Edit1" runat="server" />
+                                                <asp:Button ID="btnDelete" Text="delete" OnClientClick="return confirm('Are you sure you want do  delete')" CssClass="btn btn-danger" CommandArgument='<%#Eval("Id")%>' CommandName="Delete" runat="server" />
+                                                <asp:Button ID="btnViewWorker" Text="View" CssClass="btn btn-dark" CommandArgument='<%#Eval("Id")%>' CommandName="View" runat="server" />
+
+                                            </td>
+
+                                        </tr>
+
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
+
+                    </asp:Panel>
+                    <asp:Panel ID="PanlWorker" Visible="false" runat="server">
+                        <asp:Button ID="btnAddWorker" Text="Add Worker" OnClick="btnAddWorker_Click" CssClass="btn btn-primary" runat="server" />
+                        <asp:Button ID="btnSelectWorkerForProgramme" OnClick="btnSelectWorkerForProgramme_Click" Text="Select Worker for programme" CssClass="btn btn-primary" runat="server" />
+
+
+                        <asp:Panel ID="PanlAddWorker" Visible="false" runat="server">
+                            <asp:HiddenField ID="hidAddWorkerId" Value="0" runat="server" />
+                            <h3>Add worker</h3>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <asp:TextBox ID="txtWorkerName" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator24" ValidationGroup="AddWorker" ControlToValidate="txtWorkerName" Display="Dynamic" ForeColor="Red" ErrorMessage="Worker name is required" runat="server"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="col">
+                                    <label for="exampleInputPassword1">Post</label>
+                                    <asp:TextBox ID="txtWorkerPost" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ValidationGroup="AddWorker" ControlToValidate="txtWorkerPost" Display="Dynamic" ForeColor="Red" ErrorMessage="Worker post contact is required" runat="server"></asp:RequiredFieldValidator>
+
+                                </div>
+                                <div class="col">
+                                    <label for="exampleInputPassword1">Contact</label>
+                                    <asp:TextBox ID="txtWorkerContact" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator26" ValidationGroup="AddWorker" ControlToValidate="txtWorkerContact" Display="Dynamic" ForeColor="Red" ErrorMessage="Worker contact is required" runat="server"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" ValidationGroup="AddWorker" runat="server" Display="Dynamic" ForeColor="Red" ControlToValidate="txtWorkerContact" ValidationExpression="^[0-9]{0,10}$" ErrorMessage="Worker contact is not valid"></asp:RegularExpressionValidator>
+                                </div>
+                                <div class="col">
+                                    <label for="exampleInputPassword1">Address</label>
+                                    <asp:TextBox ID="txtWorkerAddress" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator27" ValidationGroup="AddWorker" ControlToValidate="txtWorkerAddress" Display="Dynamic" ForeColor="Red" ErrorMessage="Worker address contact is required" runat="server"></asp:RequiredFieldValidator>
+
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col">
+                                        <asp:Button ID="btnAddWorkerSave" class="btn btn-primary" OnClick="btnAddWorkerSave_Click" ValidationGroup="AddWorker" runat="server" Text="Submit" />
+
+                                        <asp:Button ID="btnAddWorkerCancel" class="btn btn-primary" OnClick="btnAddWorkerCancel_Click" runat="server" Text="Cancel" />
+
+                                        <br />
+                                        <asp:Label ID="lblAddWorkerMessage" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col  mt-3">
+                                    <asp:Repeater ID="ReptWorker" OnItemCommand="ReptWorker_ItemCommand" runat="server">
+                                        <HeaderTemplate>
+                                            <table class="table table-bordered">
+
+                                                <tr>
+                                                    <td>
+                                                        <strong>S.NO</strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong>Name</strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong>Post</strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong>Contact</strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong>Address</strong>
+                                                    </td>
+
+                                                </tr>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="Label6" runat="server" Text='<%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>'></asp:Label>
+
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="Label1" runat="server" Text='<%#Eval("WorkerName") %>'></asp:Label>
+
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="lblImageName" runat="server" Text='<%#Eval("WorkerPost") %>'></asp:Label>
+
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="Label2" runat="server" Text='<%#Eval("Contact") %>'></asp:Label>
+
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="Label3" runat="server" Text='<%#Eval("Address") %>'></asp:Label>
+
+                                                </td>
+
+
+                                                <td>
+                                                    <asp:Button ID="btnEdit" Text="edit" CommandArgument='<%#Eval("Id")%>' CssClass="btn btn-dark" CommandName="Edit1" runat="server" />
+                                                    <asp:Button ID="btnDelete" Text="delete" OnClientClick="return confirm('Are you sure you want do  delete')" CssClass="btn btn-danger" CommandArgument='<%#Eval("Id")%>' CommandName="Delete" runat="server" />
+
+                                                </td>
+
+                                            </tr>
+
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            </table>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+                                </div>
+
+                            </div>
+
+
+
+                        </asp:Panel>
+                        <asp:Panel ID="PanlSelectWorkerForProgramme" Visible="false" runat="server">
+                            <div id="Worker">
+                                <h3>Select Worker for programme</h3>
+                                <div class="form-group">
+                                    <asp:HiddenField ID="HiddenField6" runat="server" />
+                                    <label for="businesssName">Programme Date</label>
+                                    <asp:DropDownList ID="ddlWorkerProgrammeDate" AutoPostBack="true" OnSelectedIndexChanged="ddlWorkerProgrammeDate_SelectedIndexChanged"
+                                        CssClass="form-control" runat="server">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator28" ValidationGroup="AddWorkerAdd" InitialValue="0" ControlToValidate="ddlWorkerProgrammeDate" Display="Dynamic" ForeColor="Red" ErrorMessage="Programme sate is required" runat="server"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="form-group">
+
+                                    <label for="businesssName">Programme Name</label>
+                                    <asp:TextBox ID="txtWorkerNameAdd" CssClass="form-control" runat="server"></asp:TextBox>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="businesssName"></label>
+
+                                    <asp:Repeater ID="repeaterWorkerPrograme" runat="server">
+                                        <HeaderTemplate>
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>Worker Name
+                                                    </th>
+                                                    <th>Post
+                                                    </th>
+                                                    <th>Select
+                                                    </th>
+
+                                                </tr>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+
+                                            <tr>
+
+                                                <td>
+                                                    <asp:Label ID="lblWorkerName" runat="server" Text='<%#Eval("WorkerName")%>'></asp:Label>
+
+
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="lblWorkerPost" runat="server" Text='<%#Eval("WorkerPost")%>'></asp:Label>
+
+
+                                                </td>
+                                                <td>
+
+                                                    <asp:CheckBox ID="chkWorkerName" runat="server" />
+                                                    <asp:HiddenField ID="hdnWorkerId" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "Id")  %>' />
+                                                </td>
+
+                                            </tr>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            </table>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col">
+                                        <asp:Button ID="btnProgrammeWorkerSave" class="btn btn-primary" OnClick="btnProgrammeWorkerSave_Click" ValidationGroup="AddWorkerAdd" runat="server" Text="Submit" />
+
+
+
+                                        <br />
+                                        <asp:Label ID="lblProgrammeWorkerSave" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </asp:Panel>
+
+                    </asp:Panel>
+
+                    <asp:Panel ID="PanlCustomerEnquery" Visible="false" runat="server">
+                        <div id="CustomerEnquery">
+                            <h3>Customer Enquery</h3>
+
+                            <div class="form-group">
+                                <label for="businesssName"></label>
+
+                                <div style="overflow: scroll;">
+
+
+
+                                    <asp:Repeater ID="RequestRpt" runat="server" OnItemCommand="categoryRpt_ItemCommand" OnItemDataBound="UsersRpt_ItemDataBound">
+                                        <HeaderTemplate>
+                                            <table id="UsersRpttbl" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>sno</th>
+                                                        <th>Business Name</th>
+                                                        <th>Catgory Name</th>
+                                                        <th>FullName</th>
+                                                        <th>City</th>
+
+                                                        <th>PhoneNumber</th>
+                                                        <th>EventDate</th>
+                                                        <th>MessageRequest</th>
+                                                        <th>Created_Date </th>
+
+                                                        <th>IsActive</th>
+                                                    </tr>
+                                                </thead>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <tr>
+                                                <td><%# Container.ItemIndex + 1%></td>
+                                                <td  style="min-width:400px">
+                                                    <asp:Label ID="LblCompanyName" runat="server" Font-Size="Medium" Text='<%#Bind("business_name") %>'></asp:Label>
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="Label7" runat="server" Font-Size="Medium" Text='<%#Bind("catgory_name") %>'></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="Label1" runat="server" Font-Size="Medium" Text='<%#Bind("FullName") %>'></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="Label2" runat="server" Font-Size="Medium" Text='<%#Bind("Email_Id") %>'></asp:Label>
+                                                </td>
+
+                                                <td>
+                                                    <asp:Label ID="Label3" runat="server" Font-Size="Medium" Text='<%#Bind("PhoneNumber") %>'></asp:Label>
+                                                </td>
+                                                <td style="min-width:250px">
+                                                    <asp:Label ID="Label4" runat="server" Font-Size="Medium" Text='<%#Bind("EventDate") %>'></asp:Label>
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="Label5" runat="server" Font-Size="Medium" Text='<%#Bind("MessageRequest") %>'></asp:Label>
+                                                </td>
+                                                <td style="min-width:250px">
+                                                    <asp:Label ID="Label6" runat="server" Font-Size="Medium" Text='<%#Bind("Created_Date") %>'></asp:Label>
+                                                </td>
+
+
+                                                <td>
+                                                    <asp:HiddenField ID="hiIsActive" runat="server" Value='<%#Bind("status") %>' />
+                                                    <asp:Button ID="btn_edit" CausesValidation="false" CommandArgument='<%#Eval("Requestd")%>' CommandName="Edit1" CssClass="btn btn-primary" Text="Edit" runat="server" />
+
+                                                </td>
+                                            </tr>
+
+
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            </table>  
+
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </asp:Panel>
                 </div>
             </div>
         </div>

@@ -70,10 +70,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
     <File Include="bin/CitySeva.dll">
-      <publishTime>09/27/2021 07:19:01</publishTime>
+      <publishTime>11/21/2021 16:49:29</publishTime>
     </File>
     <File Include="bin/CitySeva.pdb">
-      <publishTime>09/27/2021 07:19:01</publishTime>
+      <publishTime>11/21/2021 16:49:29</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/11/2021 17:19:21</publishTime>
@@ -157,10 +157,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2021 17:19:23</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Pipes.dll">
-      <publishTime>07/27/2021 20:41:23</publishTime>
+      <publishTime>09/11/2021 17:19:23</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>07/27/2021 20:41:23</publishTime>
+      <publishTime>09/11/2021 17:19:23</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.AccessControl.dll">
       <publishTime>09/11/2021 17:19:23</publishTime>
@@ -226,7 +226,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
     <File Include="CitySeva.Master">
-      <publishTime>09/27/2021 06:43:45</publishTime>
+      <publishTime>10/10/2021 09:47:41</publishTime>
     </File>
     <File Include="Css/bootstrap.bundle.min.js">
       <publishTime>09/27/2021 07:06:11</publishTime>
@@ -253,13 +253,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
     <File Include="Css/style.css">
-      <publishTime>09/27/2021 06:43:45</publishTime>
+      <publishTime>09/29/2021 21:34:34</publishTime>
     </File>
     <File Include="Css/style.min.css">
-      <publishTime>09/27/2021 06:43:45</publishTime>
+      <publishTime>09/29/2021 21:34:34</publishTime>
     </File>
     <File Include="Css/style.scss">
-      <publishTime>09/27/2021 06:43:45</publishTime>
+      <publishTime>09/29/2021 21:34:34</publishTime>
+    </File>
+    <File Include="Css/xzoom.min.css">
+      <publishTime>10/03/2021 12:22:40</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>09/11/2021 17:19:21</publishTime>
@@ -271,10 +274,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
     <File Include="Images/banner-img-1.jpg">
-      <publishTime>07/27/2021 22:06:21</publishTime>
+      <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
     <File Include="Images/banner-img-2.jpg">
-      <publishTime>07/27/2021 22:06:21</publishTime>
+      <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
     <File Include="Images/banner-img-3.jpg">
       <publishTime>09/11/2021 17:19:21</publishTime>
@@ -285,8 +288,50 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/calendar1.png">
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
+    <File Include="Images/gallery/original/01_b_car.jpg">
+      <publishTime>10/03/2021 12:29:04</publishTime>
+    </File>
+    <File Include="Images/gallery/original/02_o_car.jpg">
+      <publishTime>10/03/2021 12:29:04</publishTime>
+    </File>
+    <File Include="Images/gallery/original/03_r_car.jpg">
+      <publishTime>10/03/2021 12:29:04</publishTime>
+    </File>
+    <File Include="Images/gallery/original/04_g_car.jpg">
+      <publishTime>10/03/2021 12:29:04</publishTime>
+    </File>
+    <File Include="Images/gallery/preview/01_b_car.jpg">
+      <publishTime>10/03/2021 12:29:04</publishTime>
+    </File>
+    <File Include="Images/gallery/preview/02_o_car.jpg">
+      <publishTime>10/03/2021 12:29:04</publishTime>
+    </File>
+    <File Include="Images/gallery/preview/03_r_car.jpg">
+      <publishTime>10/03/2021 12:29:04</publishTime>
+    </File>
+    <File Include="Images/gallery/preview/04_g_car.jpg">
+      <publishTime>10/03/2021 12:29:05</publishTime>
+    </File>
+    <File Include="Images/gallery/thumbs/01_b_car.jpg">
+      <publishTime>10/03/2021 12:29:05</publishTime>
+    </File>
+    <File Include="Images/gallery/thumbs/02_o_car.jpg">
+      <publishTime>10/03/2021 12:29:05</publishTime>
+    </File>
+    <File Include="Images/gallery/thumbs/03_r_car.jpg">
+      <publishTime>10/03/2021 12:29:05</publishTime>
+    </File>
+    <File Include="Images/gallery/thumbs/04_g_car.jpg">
+      <publishTime>10/03/2021 12:29:05</publishTime>
+    </File>
+    <File Include="Images/logo.png">
+      <publishTime>10/03/2021 12:29:05</publishTime>
+    </File>
     <File Include="Images/nav-ul-bg.png">
       <publishTime>09/11/2021 17:19:21</publishTime>
+    </File>
+    <File Include="Images/xloading.gif">
+      <publishTime>10/03/2021 12:29:05</publishTime>
     </File>
     <File Include="img_vendor/71Anf4hEPeL._UY395_.jpg">
       <publishTime>09/11/2021 17:19:22</publishTime>
@@ -390,6 +435,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/AdminScript/custom.js">
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
+    <File Include="Scripts/bootstrap.bundle.min.js">
+      <publishTime>09/27/2021 07:06:11</publishTime>
+    </File>
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
@@ -417,14 +465,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/main.js">
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
+    <File Include="Scripts/modernizr.js">
+      <publishTime>10/03/2021 12:22:07</publishTime>
+    </File>
     <File Include="Scripts/owl.carousel.min.js">
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
     <File Include="Scripts/popper.min.js">
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
+    <File Include="Scripts/setup.js">
+      <publishTime>10/03/2021 12:58:17</publishTime>
+    </File>
+    <File Include="Scripts/xzoom.min.js">
+      <publishTime>10/03/2021 12:22:32</publishTime>
+    </File>
     <File Include="SearchListing.aspx">
       <publishTime>09/11/2021 17:19:21</publishTime>
+    </File>
+    <File Include="SearchListingNew.aspx">
+      <publishTime>11/21/2021 14:28:36</publishTime>
     </File>
     <File Include="service.aspx">
       <publishTime>09/11/2021 17:19:23</publishTime>
@@ -435,14 +495,32 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Uploads/download %281%29.jpg">
       <publishTime>09/16/2021 22:12:23</publishTime>
     </File>
+    <File Include="Uploads/hg_passport.jpg">
+      <publishTime>09/29/2021 21:34:34</publishTime>
+    </File>
+    <File Include="Uploads/Restaurent3.jpg">
+      <publishTime>10/03/2021 15:15:58</publishTime>
+    </File>
+    <File Include="Uploads/Restaursnt2.jpg">
+      <publishTime>10/03/2021 14:29:18</publishTime>
+    </File>
+    <File Include="Uploads/Resturent1.jpg">
+      <publishTime>10/03/2021 14:29:03</publishTime>
+    </File>
+    <File Include="Uploads/Thali.jpg">
+      <publishTime>10/03/2021 14:28:38</publishTime>
+    </File>
     <File Include="UserPlanningTools.aspx">
       <publishTime>09/11/2021 17:19:21</publishTime>
     </File>
     <File Include="Vendor-details.aspx">
-      <publishTime>09/11/2021 17:19:21</publishTime>
+      <publishTime>11/21/2021 14:26:03</publishTime>
     </File>
     <File Include="Vendor.aspx">
-      <publishTime>09/27/2021 06:43:45</publishTime>
+      <publishTime>11/21/2021 16:48:45</publishTime>
+    </File>
+    <File Include="VendorDetail.html">
+      <publishTime>10/05/2021 13:50:25</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>09/27/2021 07:19:02</publishTime>

@@ -155,6 +155,19 @@ namespace CitySeva.Models
 
         }
 
+
+        public DataTable GetVendorListingstring(string service, string location)
+        {
+            SqlParameter[] pram =
+            {
+              new SqlParameter("@service",service.Trim()),
+               new SqlParameter("@location",location.Trim())
+
+            };
+
+            return DataHealper.DbExecuteDataTable("usp_GetVendorListing", pram);
+
+        }
         public string DeleteVendeRregistration(int ID)
         {
             SqlParameter[] pram =

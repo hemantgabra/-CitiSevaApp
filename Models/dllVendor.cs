@@ -143,9 +143,10 @@ namespace CitySeva.Models
 
             return DataHealper.DbExecuteExecuteScalar("[Usp_ServiceOffered_insert]", pram).ToString();
         }
-        public DataSet GetSerivceTpye(Int32 Id, string ServiceType)
+        public DataSet GetSerivceTpye(Int32 Id, string ServiceType, int serviceId)
         {
-            SqlParameter[] pram = { new SqlParameter("@AddedBy", Id), new SqlParameter("@ServiceType", ServiceType) };
+            SqlParameter[] pram = { new SqlParameter("@AddedBy", Id), new SqlParameter("@ServiceType", ServiceType) ,
+             new SqlParameter("@ServiceId", serviceId) };
             return DataHealper.DbExecuteDataSet("Usp_GetPlaterSystes", pram);
         }
 
@@ -174,6 +175,90 @@ namespace CitySeva.Models
             };
 
             return DataHealper.DbExecuteExecuteScalar("[usp_PaymentType_insertUpdate]", pram).ToString();
+        }
+
+        public DataTable GetSerivceList(Int32 Id, string ServiceType)
+        {
+            SqlParameter[] pram = { new SqlParameter("@ServiceType", ServiceType), new SqlParameter("@VendorId", Id) };
+            return DataHealper.DbExecuteDataTable("usp_GetVendorServices", pram);
+        }
+        public string SaveCustomerInfo(Int32 Id, string CustomerName, string Contact, DateTime ProgrameDate, string ProgrameName, string ProgrameAddress, string ProgrameCity, int VendorId)
+        {
+            SqlParameter[] pram = {
+                new SqlParameter("@Id", Id),
+                new SqlParameter("@CustomerName", CustomerName),
+                new SqlParameter("@Contact", Contact),
+                new SqlParameter("@ProgrameDate", ProgrameDate),
+                new SqlParameter("@ProgrameName", ProgrameName),
+                new SqlParameter("@ProgrameAddress", ProgrameAddress),
+                new SqlParameter("@ProgrameCity", ProgrameCity),              
+                new SqlParameter("@VendorId", VendorId) };
+            return DataHealper.DbExecuteExecuteScalar("usp_SaveCustomers", pram).ToString();
+        }
+
+        public DataTable GetCustomersInfoByVendor(int vendorId)
+        {
+            SqlParameter[] prams = { new SqlParameter("@VendorId", vendorId) };
+            return DataHealper.DbExecuteDataTable("usp_GetCustomersInfoByVendor", prams);
+        }
+        public DataTable GetCustomersInfoByCustomerId(int Id)
+        {
+            SqlParameter[] prams = { new SqlParameter("@Id", Id) };
+            return DataHealper.DbExecuteDataTable("usp_GetCustomersInfoCustomerID", prams);
+        }
+        public string DeleteCustomersInfoByVendor(int Id)
+        {
+            SqlParameter[] prams = { new SqlParameter("@Id", Id) };
+            return DataHealper.DbExecuteExecuteScalar("usp_DeleteCustomersInfoCustomerID", prams).ToString();
+        }
+
+        public string SaveWorkerInfo(Int32 Id, string WorkerName,   string WorkerPost, string Contact, string Address,   int VendorId)
+        {
+            SqlParameter[] pram = {
+                new SqlParameter("@Id", Id),
+                new SqlParameter("@WorkerName", WorkerName),             
+                new SqlParameter("@WorkerPost", WorkerPost),
+                new SqlParameter("@Contact", Contact),
+                new SqlParameter("@Address", Address),               
+                new SqlParameter("@VendorId", VendorId) };
+            return DataHealper.DbExecuteExecuteScalar("usp_InsertWorker", pram).ToString();
+        }
+
+        public DataTable GetWorkerInfoByVendor(int vendorId)
+        {
+            SqlParameter[] prams = { new SqlParameter("@VendorId", vendorId) };
+            return DataHealper.DbExecuteDataTable("usp_GetWorkerVendor", prams);
+        }
+        public DataTable GetWorkerInfoByCustomerId(int Id)
+        {
+            SqlParameter[] prams = { new SqlParameter("@Id", Id) };
+            return DataHealper.DbExecuteDataTable("usp_GetWorkerById", prams);
+        }
+        public string DeleteWorkerInfoById(int Id)
+        {
+            SqlParameter[] prams = { new SqlParameter("@Id", Id) };
+            return DataHealper.DbExecuteExecuteScalar("usp_DeleteWorker", prams).ToString();
+        }
+
+        public DataTable GetProgrammeDetailsById(int ProgrammeId, int vendorId)
+        { 
+            SqlParameter[] prams = { new SqlParameter("@Id", ProgrammeId),
+            new SqlParameter("@VendorId", vendorId) };
+            return DataHealper.DbExecuteDataTable("usp_GetProgrammeDetailsById", prams);
+        }
+        public string SaveWorkerProgramme(Int32 ProgrammeId, string WorkerIds)
+        {
+            SqlParameter[] pram = {
+                new SqlParameter("@ProgramneId", ProgrammeId),
+                new SqlParameter("@WorkerIds", WorkerIds),
+            
+                };
+            return DataHealper.DbExecuteExecuteScalar("usp_InsertProgrammeWorkerMap", pram).ToString();
+        }
+        public DataTable GetProgrameWorkerDetails(int ProgrammeId)
+        {
+            SqlParameter[] prams = { new SqlParameter("@ProgrammeId", ProgrammeId) };
+            return DataHealper.DbExecuteDataTable("usp_GetProgrameWorkerDetails", prams);
         }
     }
 }

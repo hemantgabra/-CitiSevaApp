@@ -122,10 +122,12 @@
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\setup.js" />
     <Content Include="Scripts\xzoom.min.js" />
-    <Content Include="Uploads\download %281%29.jpg" />
+    <Content Include="SearchListingNew.aspx" />
     <Content Include="Uploads\hg_passport.jpg" />
-    <Content Include="Uploads\img1.png" />
-    <Content Include="Uploads\img2.jpg" />
+    <Content Include="Uploads\Restaurent3.jpg" />
+    <Content Include="Uploads\Restaursnt2.jpg" />
+    <Content Include="Uploads\Resturent1.jpg" />
+    <Content Include="Uploads\Thali.jpg" />
     <Content Include="Vendor-details.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="forgot.aspx" />
@@ -202,6 +204,13 @@
     <Compile Include="Models\dllVendeRregistration.cs" />
     <Compile Include="Models\dllVendor.cs" />
     <Compile Include="Models\EntityCategory.cs" />
+    <Compile Include="SearchListingNew.aspx.cs">
+      <DependentUpon>SearchListingNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchListingNew.aspx.designer.cs">
+      <DependentUpon>SearchListingNew.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

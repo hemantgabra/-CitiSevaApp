@@ -32,7 +32,7 @@ header {
   height: 60px;
   width: 100%; }
 
-#footerBottom {
+.footerBottom {
   position: relative;
   min-height: 100vh; }
 
@@ -1659,8 +1659,9 @@ header {
   .vendor-reg-left .nav-link {
     background: transparent;
     text-align: left;
-    padding: 10px 10px 10px 10px;
-    color: #fb1b26; }
+    padding: 10px;
+    color: #fb1b26;
+    text-transform: uppercase; }
   .vendor-reg-left .nav-link.active {
     background: white;
     color: #494949;

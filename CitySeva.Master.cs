@@ -98,7 +98,7 @@ namespace CitySeva
 
         protected void btn_success_Click(object sender, EventArgs e)
         {
-            Response.Redirect("SearchListing.aspx?ser=" + selectService.Text + "&lc=" + dd_location.SelectedValue + "");
+            Response.Redirect("SearchListingNew.aspx?ser=" + selectService.Text + "&lc=" + dd_location.SelectedValue + "");
         }
     }
 }
