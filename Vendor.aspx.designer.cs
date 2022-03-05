@@ -607,13 +607,13 @@ namespace CitySeva {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
         
         /// <summary>
-        /// txtBusinessCategory control.
+        /// ddlBusinessCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBusinessCategory;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBusinessCategory;
         
         /// <summary>
         /// RequiredFieldValidator10 control.
@@ -643,13 +643,13 @@ namespace CitySeva {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
         
         /// <summary>
-        /// txtBusinessCity control.
+        /// ddlBusinessCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBusinessCity;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBusinessCity;
         
         /// <summary>
         /// RequiredFieldValidator13 control.
@@ -769,6 +769,114 @@ namespace CitySeva {
         protected global::System.Web.UI.WebControls.Panel panlProduct;
         
         /// <summary>
+        /// hidCategoryId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidCategoryId;
+        
+        /// <summary>
+        /// divProductAndServices control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divProductAndServices;
+        
+        /// <summary>
+        /// ddlBusinessSubCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBusinessSubCategory;
+        
+        /// <summary>
+        /// txtServiceNameTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtServiceNameTitle;
+        
+        /// <summary>
+        /// btnLinkItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnLinkItem;
+        
+        /// <summary>
+        /// btnLinkServices control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnLinkServices;
+        
+        /// <summary>
+        /// hidPlateSystemUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidPlateSystemUpdate;
+        
+        /// <summary>
+        /// reptPricePerPlate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater reptPricePerPlate;
+        
+        /// <summary>
+        /// chk_service control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList chk_service;
+        
+        /// <summary>
+        /// txtBusinessSubCategoryPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBusinessSubCategoryPrice;
+        
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// Label9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label9;
+        
+        /// <summary>
         /// btn_PricePerPlate control.
         /// </summary>
         /// <remarks>
@@ -823,24 +931,6 @@ namespace CitySeva {
         protected global::System.Web.UI.WebControls.DropDownList ddl_PerPlatePrice;
         
         /// <summary>
-        /// hidPlateSystemUpdate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidPlateSystemUpdate;
-        
-        /// <summary>
-        /// reptPricePerPlate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater reptPricePerPlate;
-        
-        /// <summary>
         /// chkNonVegePlate control.
         /// </summary>
         /// <remarks>
@@ -875,15 +965,6 @@ namespace CitySeva {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNoOfGust;
-        
-        /// <summary>
-        /// chk_service control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chk_service;
         
         /// <summary>
         /// btnSaveProductPerPalte control.

@@ -43,7 +43,8 @@ namespace CitySeva.Models
         }
 
         public string UpdateVendorBusinessDetails(int vandor_Id, string business_name,
-            string business_address, string category, string city, string other_city, string travel_and_stay, string business_running_from, string pinCode, string state)
+            string business_address, string category, string city, string other_city, string travel_and_stay
+            , string business_running_from, string pinCode, string state,int categoryId, int locationId)
         {
             SqlParameter[] pram = {
              new SqlParameter("@vandor_Id", vandor_Id),
@@ -56,6 +57,8 @@ namespace CitySeva.Models
              new SqlParameter("@business_running_from", business_running_from),
              new SqlParameter("@pinCode", pinCode),
              new SqlParameter("@state", state),
+             new SqlParameter("@categoryId", categoryId),
+             new SqlParameter("@locationId", locationId),
             };
 
 

@@ -76,6 +76,8 @@ namespace CitySeva
                 DisplayImages();
                 GetVendorContactDetails(clsMain.getLoggedUserID());
                 GetVendorBusinessDetails(clsMain.getLoggedUserID());
+                GetBusinessCityList();
+                GetBusinessCategoryList();
 
             }
         }
@@ -120,8 +122,58 @@ namespace CitySeva
         }
 
 
+        public void  GetBusinessCategoryList()
+        {
+            DataTable dt = DllCommonUtilityOBJ.GetCategoryList();
+            if (dt.Rows.Count > 0)
+            {
+                ddlBusinessCategory.AppendDataBoundItems = true;
+                ddlBusinessCategory.Items.Insert(0, new ListItem { Text = "Select", Value = "0" });
+                ddlBusinessCategory.DataValueField = "categoryId";
+                ddlBusinessCategory.DataTextField = "catgory_name";
+                ddlBusinessCategory.DataSource = dt;
+                ddlBusinessCategory.DataBind();
+               
 
 
+
+            }
+
+        }
+        public void GetBusinessCityList()
+        {
+            DataTable dt = DllCommonUtilityOBJ.GetLocationList();
+            if (dt.Rows.Count > 0)
+            {
+                ddlBusinessCity.AppendDataBoundItems = true;
+                ddlBusinessCity.Items.Insert(0, new ListItem { Text = "Select", Value = "0" });
+                ddlBusinessCity.DataValueField = "id";
+                ddlBusinessCity.DataTextField = "location";
+                ddlBusinessCity.DataSource = dt;
+                ddlBusinessCity.DataBind();
+            
+
+
+
+            }
+        }
+        public void GetBusinessSubCategoryList(int CategoryId)
+        {
+            DataTable dt = DllCommonUtilityOBJ.GetSubCategoryList(CategoryId);
+            if (dt.Rows.Count > 0)
+            {
+                ddlBusinessSubCategory.AppendDataBoundItems = true;
+                ddlBusinessSubCategory.Items.Insert(0, new ListItem { Text = "Select", Value = "0" });
+                ddlBusinessSubCategory.DataValueField = "id";
+                ddlBusinessSubCategory.DataTextField = "sub_category";
+                ddlBusinessSubCategory.DataSource = dt;
+                ddlBusinessSubCategory.DataBind();
+
+
+
+
+            }
+        }
         private void GetVendorBusinessDetails(int vendorId)
         {
 
@@ -129,9 +181,10 @@ namespace CitySeva
             if (dt.Rows.Count > 0)
             {
                 txtBusinessName.Text = dt.Rows[0]["business_name"].ToString();
-                txtBusinessCategory.Text = dt.Rows[0]["category"].ToString();
+                ddlBusinessCategory.SelectedValue = dt.Rows[0]["CategoryId"].ToString();
                 txtBusinessAddress.Text = dt.Rows[0]["business_address"].ToString();
-                txtBusinessCity.Text = dt.Rows[0]["city"].ToString();
+                 hidCategoryId.Value= dt.Rows[0]["CategoryId"].ToString();
+                ddlBusinessCity.SelectedValue = dt.Rows[0]["LocationId"].ToString();
                 chkYes.Checked = Convert.ToBoolean(dt.Rows[0]["other_city"]);
                 chkTravel.Checked = Convert.ToBoolean(dt.Rows[0]["travel_and_stay"]);
                 txtBusinessPinCode.Text = dt.Rows[0]["pinCode"].ToString();
@@ -143,8 +196,15 @@ namespace CitySeva
         }
         protected void btnBusinessContact_Click(object sender, EventArgs e)
         {
-            string message = dllVendor.UpdateVendorBusinessDetails(clsMain.getLoggedUserID(), txtBusinessName.Text.Trim(), txtBusinessAddress.Text.Trim(), txtBusinessCategory.Text.Trim(),
-                txtBusinessCity.Text.Trim(), chkYes.Checked.ToString(), chkTravel.Checked.ToString(), txtBusinessRunning.Text.Trim(), txtBusinessPinCode.Text.Trim(), txtState.Text.Trim());
+
+            int categoryId;
+            int locationId;
+            int.TryParse(ddlBusinessCategory.SelectedValue,out categoryId);
+            int.TryParse(ddlBusinessCity.SelectedValue, out locationId);
+
+
+            string message = dllVendor.UpdateVendorBusinessDetails(clsMain.getLoggedUserID(), txtBusinessName.Text.Trim(), txtBusinessAddress.Text.Trim(), ddlBusinessCategory.SelectedItem.Text.Trim(),
+                ddlBusinessCity.SelectedItem.Text.Trim(), chkYes.Checked.ToString(), chkTravel.Checked.ToString(), txtBusinessRunning.Text.Trim(), txtBusinessPinCode.Text.Trim(), txtState.Text.Trim(), categoryId,locationId);
             if (message == "Success")
             {
                 lblmessageBusiness.Text = "Business contact details saved";
@@ -262,7 +322,9 @@ namespace CitySeva
 
             LinkActiveInActive(Producttab, "active");
             ShowHidePanel(panlProduct, true);
-
+            int categoryId;
+            int.TryParse(hidCategoryId.Value, out categoryId);
+            GetBusinessSubCategoryList(categoryId);
             GetPricePerPlate(0);
             GetVendorServiceList();
         }

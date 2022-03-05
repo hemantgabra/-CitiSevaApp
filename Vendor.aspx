@@ -411,9 +411,10 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessName" Display="Dynamic" ForeColor="Red" ErrorMessage="First name is required" runat="server"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col">
-                                    <label for="lblBusinessCategory">Business Category</label>
-                                    <asp:TextBox ID="txtBusinessCategory" runat="server" class="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessCategory" Display="Dynamic" ForeColor="Red" ErrorMessage="Last name is required" runat="server"></asp:RequiredFieldValidator>
+                                    <label for="lblBusinessCategory">Business Category</label>                                     
+                                    <asp:DropDownList ID="ddlBusinessCategory" class="form-control" runat="server">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ValidationGroup="BusinessContactGroup" ControlToValidate="ddlBusinessCategory" InitialValue="0" Display="Dynamic" ForeColor="Red" ErrorMessage="Last name is required" runat="server"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
 
@@ -425,8 +426,10 @@
                                 </div>
                                 <div class="col">
                                     <label for="lbltxtBusinessCity">City</label>
-                                    <asp:TextBox ID="txtBusinessCity" runat="server" class="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessCity" Display="Dynamic" ForeColor="Red" ErrorMessage="City is required" runat="server"></asp:RequiredFieldValidator>
+
+                                    <asp:DropDownList ID="ddlBusinessCity" class="form-control" runat="server">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ValidationGroup="BusinessContactGroup" ControlToValidate="ddlBusinessCity" InitialValue="0" Display="Dynamic" ForeColor="Red" ErrorMessage="City is required" runat="server"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
 
@@ -477,28 +480,31 @@
                             </div>
                         </div>
                     </asp:Panel>
+
+
                     <asp:Panel ID="panlProduct" Width="100%" Visible="false" runat="server">
-                        <asp:Button ID="btn_PricePerPlate" Text="Per Plate System" OnClick="btn_PricePerPlate_Click" CssClass=" btn btn-primary" runat="server" />
-                        <asp:Button ID="btn_cookingPackage" Text="Cooking Package" OnClick="btn_cookingPackage_Click" CssClass=" btn btn-primary" runat="server" />
+                        <asp:HiddenField ID="hidCategoryId" runat="server" />
+                        <div id="divProductAndServices" runat="server">
+                            
+                              <div class="form-group">
+                                    
+                                    <label for="businesssName">Service Type</label>
+                                  <asp:DropDownList id="ddlBusinessSubCategory" CssClass="form-control" runat="server"></asp:DropDownList>
 
-                        <asp:Panel ID="PanlPricePerPlate" Visible="false" runat="server">
-                            <div id="Product">
-                                <h3>Per Plate System</h3>
-                                <div id="divPlateSystem" runat="server" class="form-group">
+                                    
                                 </div>
-                                <div class="form-group">
-                                    <asp:HiddenField ID="hidPerPlatePrice" runat="server" />
-                                    <label for="businesssName">Per Plate Price</label>
-                                    <asp:DropDownList ID="ddl_PerPlatePrice" runat="server">
-                                        <asp:ListItem Text="300" Value="300"></asp:ListItem>
-                                        <asp:ListItem Text="700" Value="700"></asp:ListItem>
-                                        <asp:ListItem Text="1200" Value="1200"></asp:ListItem>
-                                    </asp:DropDownList>
+                             <div class="form-group">
+                                 <label for="businesssName">Title</label>
+                                 <asp:TextBox ID="txtServiceNameTitle" CssClass="form-control" runat="server"></asp:TextBox>
+                             </div>
+                            <div class="form-group">
 
-                                    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator16" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessName" Display="Dynamic" ForeColor="Red" ErrorMessage="First name is required" runat="server"></asp:RequiredFieldValidator>--%>
-                                </div>
-
-                                <div class="form-group">
+                                 <label for="businesssName">Price/Text</label>
+                                <asp:LinkButton ID="btnLinkItem" runat="server" Text="Add Items" ></asp:LinkButton>
+                                <asp:LinkButton ID="btnLinkServices" runat="server" Text="Add Services" ></asp:LinkButton>
+                            </div>
+                            <div class="form-group">
+                                  <label for="businesssName">Price/Text</label>
                                     <label for="businesssName">Vegetable Items</label>
                                     <asp:HiddenField ID="hidPlateSystemUpdate" runat="server" />
                                     <asp:Repeater ID="reptPricePerPlate" runat="server">
@@ -541,6 +547,44 @@
                                     </asp:Repeater>
 
                                 </div>
+                              <div class="form-group">
+                                    <label for="businesssName">Services</label>
+                                    <asp:CheckBoxList ID="chk_service" runat="server">
+                                    </asp:CheckBoxList>
+                                </div>
+                             <div class="form-group">
+
+
+
+                                 
+                                 <asp:TextBox ID="txtBusinessSubCategoryPrice" CssClass="form-control" runat="server"></asp:TextBox>
+                             </div>
+                             <div style="clear: both; height: 10px;"></div>
+                                <asp:Button ID="Button1" runat="server" Text="Save" />
+                                <asp:Label ID="Label9" runat="server"></asp:Label>
+                                <div style="clear: both; height: 100px;"></div>
+                        </div>
+                        <asp:Button ID="btn_PricePerPlate" Text="Per Plate System" OnClick="btn_PricePerPlate_Click" CssClass=" btn btn-primary" runat="server" />
+                        <asp:Button ID="btn_cookingPackage" Text="Cooking Package" OnClick="btn_cookingPackage_Click" CssClass=" btn btn-primary" runat="server" />
+
+                        <asp:Panel ID="PanlPricePerPlate" Visible="false" runat="server">
+                            <div id="Product">
+                                <h3>Per Plate System</h3>
+                                <div id="divPlateSystem" runat="server" class="form-group">
+                                </div>
+                                <div class="form-group">
+                                    <asp:HiddenField ID="hidPerPlatePrice" runat="server" />
+                                    <label for="businesssName">Per Plate Price</label>
+                                    <asp:DropDownList ID="ddl_PerPlatePrice" runat="server">
+                                        <asp:ListItem Text="300" Value="300"></asp:ListItem>
+                                        <asp:ListItem Text="700" Value="700"></asp:ListItem>
+                                        <asp:ListItem Text="1200" Value="1200"></asp:ListItem>
+                                    </asp:DropDownList>
+
+                                    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator16" ValidationGroup="BusinessContactGroup" ControlToValidate="txtBusinessName" Display="Dynamic" ForeColor="Red" ErrorMessage="First name is required" runat="server"></asp:RequiredFieldValidator>--%>
+                                </div>
+
+                                
 
                                 <div class="form-group">
                                     <label for="businesssName">Non Vegetable Items</label><asp:CheckBox ID="chkNonVegePlate" Text="Display" runat="server" />
@@ -590,11 +634,7 @@
                                     <asp:TextBox ID="txtNoOfGust" CssClass="form-control" runat="server"></asp:TextBox>
 
                                 </div>
-                                <div class="form-group">
-                                    <label for="businesssName">Services</label>
-                                    <asp:CheckBoxList ID="chk_service" runat="server">
-                                    </asp:CheckBoxList>
-                                </div>
+                              
 
                                 <div style="clear: both; height: 10px;"></div>
                                 <asp:Button ID="btnSaveProductPerPalte" runat="server" OnClick="btnSaveProductPerPalte_Click" Text="Save" />
@@ -723,6 +763,8 @@
                             </div>
 
                         </asp:Panel>
+
+
                     </asp:Panel>
                     <asp:Panel ID="PanlUploadPhotos" Visible="false" runat="server">
                         <asp:Image ID="imgEdit" Width="100px" Height="100px" Visible="false" runat="server" />
@@ -1233,7 +1275,7 @@
                                         <ItemTemplate>
                                             <tr>
                                                 <td><%# Container.ItemIndex + 1%></td>
-                                                <td  style="min-width:400px">
+                                                <td style="min-width: 400px">
                                                     <asp:Label ID="LblCompanyName" runat="server" Font-Size="Medium" Text='<%#Bind("business_name") %>'></asp:Label>
                                                 </td>
                                                 <td>
@@ -1247,13 +1289,13 @@
                                                 <td>
                                                     <asp:Label ID="Label3" runat="server" Font-Size="Medium" Text='<%#Bind("PhoneNumber") %>'></asp:Label>
                                                 </td>
-                                                <td style="min-width:250px">
+                                                <td style="min-width: 250px">
                                                     <asp:Label ID="Label4" runat="server" Font-Size="Medium" Text='<%#Bind("EventDate") %>'></asp:Label>
                                                 </td>
                                                 <td>
                                                     <asp:Label ID="Label5" runat="server" Font-Size="Medium" Text='<%#Bind("MessageRequest") %>'></asp:Label>
                                                 </td>
-                                                <td style="min-width:250px">
+                                                <td style="min-width: 250px">
                                                     <asp:Label ID="Label6" runat="server" Font-Size="Medium" Text='<%#Bind("Created_Date") %>'></asp:Label>
                                                 </td>
 

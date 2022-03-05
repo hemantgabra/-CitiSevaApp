@@ -14,6 +14,15 @@ namespace CitySeva.Models
             DataTable dt = DataHealper.DbExecuteDataTable("usp_category_GetList");
             return dt;
         }
+
+        public DataTable GetSubCategoryList(int CategoeyID)
+        {
+
+            SqlParameter[] pram = { new SqlParameter("@CategoryId", CategoeyID)
+            };
+            DataTable dt = DataHealper.DbExecuteDataTable("usp_GetSubCategoryById", pram);
+            return dt;
+        }
         public DataTable GetLocationList()
         {
             DataTable dt = DataHealper.DbExecuteDataTable("dbo.usp_location_GetList");
