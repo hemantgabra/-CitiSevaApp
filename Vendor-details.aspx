@@ -96,7 +96,8 @@
     </script>
     <asp:Panel ID="PanlDashboard" runat="server">
           <asp:HiddenField ID="hidrequestid" ClientIDMode="Static" runat="server" />
-        <div class="row m-2">
+        <div class="container">
+        <div class="row mt-5 mb-5">
             <div class="col-6">
                 <section id="magnific">
                     <div class="row">
@@ -309,7 +310,7 @@
                 </div>
             </div>
         </div>
-
+            </div>
     </asp:Panel>
 
 
