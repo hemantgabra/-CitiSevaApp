@@ -31,6 +31,7 @@ namespace CitySeva
 
                 divLogin.InnerHtml = "<div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>" +
                                         " <a class='dropdown-item' href='profile.aspx'>Profile</a>" +
+                                        " <a class='dropdown-item' href='#'>My Dashboard</a>" +
                                         " <a class='dropdown-item' href='UserPlanningTools.aspx'>My Planning Tools</a>" +
                                       "<a class='dropdown-item' href='changePassword.aspx'>Change Password</a>" +
                                       "<a class='dropdown-item' href='logout.aspx'>Logout</a></div>"+

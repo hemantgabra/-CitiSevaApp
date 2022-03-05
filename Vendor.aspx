@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            <div class="nav flex-column nav-pills col-2 pt-3 vendor-reg-left" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <div class="nav flex-column nav-pills col-2 pt-5 vendor-reg-left" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                 <asp:Button ID="Dashboardtab" class="nav-link" OnClick="Dashboardtab_Click" Text="Dashboard" runat="server"></asp:Button>
                 <asp:Button ID="Personaltab" class="nav-link" OnClick="Personaltab_Click" Text="Personal Contact" runat="server"></asp:Button>
@@ -115,7 +115,7 @@
             </div>
 
 
-            <div class="col-10">
+            <div class="col-10 pl-5 pt-3">
 
 
 
@@ -560,7 +560,7 @@
                                  <asp:TextBox ID="txtBusinessSubCategoryPrice" CssClass="form-control" runat="server"></asp:TextBox>
                              </div>
                              <div style="clear: both; height: 10px;"></div>
-                                <asp:Button ID="Button1" runat="server" Text="Save" />
+                                <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" />
                                 <asp:Label ID="Label9" runat="server"></asp:Label>
                                 <div style="clear: both; height: 100px;"></div>
                         </div>
@@ -637,7 +637,7 @@
                               
 
                                 <div style="clear: both; height: 10px;"></div>
-                                <asp:Button ID="btnSaveProductPerPalte" runat="server" OnClick="btnSaveProductPerPalte_Click" Text="Save" />
+                                <asp:Button ID="btnSaveProductPerPalte" runat="server" CssClass="btn btn-primary btn-sm" OnClick="btnSaveProductPerPalte_Click" Text="Save" />
                                 <asp:Label ID="lblMessageServicePlateSystem" runat="server"></asp:Label>
                                 <div style="clear: both; height: 100px;"></div>
                             </div>
@@ -789,20 +789,20 @@
                                 <HeaderTemplate>
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <table class="table table-bordered">
+                                    <table class="table table-striped table-bordered table-light">
                                         <tr>
 
-                                            <td>
-                                                <asp:Image ID="Image1" ImageUrl='<%# String.Format(string.Concat("Uploads/",Eval("ImagePath")))%>' Width="50px" Height="50px" runat="server" />
+                                            <td style="width:180px">
+                                                <asp:Image ID="Image1" ImageUrl='<%# String.Format(string.Concat("Uploads/",Eval("ImagePath")))%>' Width="170px" Height="150px" runat="server" />
+
+                                            </td>
+                                            <td style="width:500px">
+                                                <asp:Label ID="lblImageName" runat="server" CssClass="txt20" Text='<%#Eval("ImageName") %>'></asp:Label>
 
                                             </td>
                                             <td>
-                                                <asp:Label ID="lblImageName" runat="server" Text='<%#Eval("ImageName") %>'></asp:Label>
-
-                                            </td>
-                                            <td>
-                                                <asp:Button ID="btnEdit" Text="edit" CommandArgument='<%#Eval("Id")%>' CommandName="Edit1" runat="server" />
-                                                <asp:Button ID="btnDelete" Text="delete" OnClientClick="return confirm('Are you sure you want do  delete image')" CommandArgument='<%#Eval("Id")%>' CommandName="Delete" runat="server" />
+                                                <asp:Button ID="btnEdit" Text="Edit" CssClass="btn btn-primary btn-sm" CommandArgument='<%#Eval("Id")%>' CommandName="Edit1" runat="server" />
+                                                <asp:Button ID="btnDelete" Text="Delete" CssClass="btn btn-primary btn-sm" OnClientClick="return confirm('Are you sure you want do  delete image')" CommandArgument='<%#Eval("Id")%>' CommandName="Delete" runat="server" />
 
                                             </td>
 
@@ -889,7 +889,7 @@
 
 
                             <div style="clear: both; height: 10px;"></div>
-                            <asp:Button ID="btnSavePaymentMode" runat="server" OnClick="btnSavePaymentMode_Click" Text="Save" />
+                            <asp:Button ID="btnSavePaymentMode" runat="server" CssClass="btn btn-primary btn-sm" OnClick="btnSavePaymentMode_Click" Text="Save" />
                             <asp:Label ID="lblMessagePaymentMode" runat="server"></asp:Label>
                             <div style="clear: both; height: 100px;"></div>
                         </div>
@@ -1227,7 +1227,7 @@
 
                                 <div class="form-group">
                                     <div class="col">
-                                        <asp:Button ID="btnProgrammeWorkerSave" class="btn btn-primary" OnClick="btnProgrammeWorkerSave_Click" ValidationGroup="AddWorkerAdd" runat="server" Text="Submit" />
+                                        <asp:Button ID="btnProgrammeWorkerSave" CssClass="btn btn-primary btn-sm" OnClick="btnProgrammeWorkerSave_Click" ValidationGroup="AddWorkerAdd" runat="server" Text="Submit" />
 
 
 
@@ -1328,7 +1328,7 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
 
 
