@@ -89,7 +89,7 @@
     <Content Include="ChangeLogin.aspx" />
     <Content Include="changePassword.aspx" />
     <Content Include="Checklist.aspx" />
-    <Content Include="Css\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Css\bootstrap.css" />
     <Content Include="Css\bootstrap.min.css" />
     <Content Include="Css\font-awesome.min.css" />
@@ -103,8 +103,31 @@
     <Content Include="Css\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
+    <Content Include="Css\xzoom.min.css" />
+    <Content Include="Images\gallery\original\01_b_car.jpg" />
+    <Content Include="Images\gallery\original\02_o_car.jpg" />
+    <Content Include="Images\gallery\original\03_r_car.jpg" />
+    <Content Include="Images\gallery\original\04_g_car.jpg" />
+    <Content Include="Images\gallery\preview\01_b_car.jpg" />
+    <Content Include="Images\gallery\preview\02_o_car.jpg" />
+    <Content Include="Images\gallery\preview\03_r_car.jpg" />
+    <Content Include="Images\gallery\preview\04_g_car.jpg" />
+    <Content Include="Images\gallery\thumbs\01_b_car.jpg" />
+    <Content Include="Images\gallery\thumbs\02_o_car.jpg" />
+    <Content Include="Images\gallery\thumbs\03_r_car.jpg" />
+    <Content Include="Images\gallery\thumbs\04_g_car.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\xloading.gif" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
-    <Content Include="Uploads\download %281%29.jpg" />
+    <Content Include="Scripts\modernizr.js" />
+    <Content Include="Scripts\setup.js" />
+    <Content Include="Scripts\xzoom.min.js" />
+    <Content Include="SearchListingNew.aspx" />
+    <Content Include="Uploads\hg_passport.jpg" />
+    <Content Include="Uploads\Restaurent3.jpg" />
+    <Content Include="Uploads\Restaursnt2.jpg" />
+    <Content Include="Uploads\Resturent1.jpg" />
+    <Content Include="Uploads\Thali.jpg" />
     <Content Include="Vendor-details.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="forgot.aspx" />
@@ -161,6 +184,7 @@
     <Content Include="service.aspx" />
     <Content Include="SignUp.aspx" />
     <Content Include="UserPlanningTools.aspx" />
+    <Content Include="VendorDetail.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -180,6 +204,13 @@
     <Compile Include="Models\dllVendeRregistration.cs" />
     <Compile Include="Models\dllVendor.cs" />
     <Compile Include="Models\EntityCategory.cs" />
+    <Compile Include="SearchListingNew.aspx.cs">
+      <DependentUpon>SearchListingNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchListingNew.aspx.designer.cs">
+      <DependentUpon>SearchListingNew.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

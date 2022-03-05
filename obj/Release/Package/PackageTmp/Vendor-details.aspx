@@ -1,146 +1,316 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CitySeva.Master" AutoEventWireup="true" CodeBehind="Vendor-details.aspx.cs" Inherits="CitySeva.dashboard.Vendor_details" %>
 
 <asp:Content ID="content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <style>
-        a:hover,
-        a:focus {
-            text-decoration: none;
-            outline: none;
-        }
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-        .demo {
-            background-color: #F3F1F8;
-        }
+    <script>
 
-        .vertical-tab {
-            font-family: 'Karla', sans-serif;
-            display: table;
-        }
+        $(document).ready(function () {
+            $("#txt_buttonRequest").click(function () {
 
-            .vertical-tab .nav-tabs {
-                display: table-cell;
-                width: 25%;
-                min-width: 25%;
-                border: none;
-                vertical-align: top;
-            }
+                SaveOrderData();
 
-                .vertical-tab .nav-tabs li {
-                    float: none;
+            });
+            $("#txt_Date").datepicker();
+            $('#txt_phoneNumber').keyup(function (e) {
+                if (/\D/g.test(this.value)) {
+                    // Filter non-digits from input value.
+                    this.value = this.value.replace(/\D/g, '');
                 }
+            });
+        });
 
-                    .vertical-tab .nav-tabs li a {
-                        color: #555;
-                        background: #fff;
-                        font-size: 16px;
-                        font-weight: 500;
-                        letter-spacing: 0.5px;
-                        text-transform: uppercase;
-                        text-align: center;
-                        padding: 8px 7px 7px;
-                        margin: 0 10px 12px 0;
-                        border-radius: 30px;
-                        border: none;
-                        box-shadow: 0 0 5px rgba(0,0,0,0.1);
-                        overflow: hidden;
-                        position: relative;
-                        z-index: 1;
-                        transition: all 0.5s ease 0s;
-                    }
 
-                        .vertical-tab .nav-tabs li a:hover,
-                        .vertical-tab .nav-tabs li.active a,
-                        .vertical-tab .nav-tabs li.active a:hover {
-                            color: #fff;
-                            background: #fff;
-                            border: none;
+
+        function SaveOrderData() {
+
+            var requestid = $("#hidrequestid").val();
+            var fullName = $("#txt_FullName").val();
+            var email = $("#txt_email").val();
+            var phoneNumber = $("#txt_phoneNumber").val();
+            var date = $("#txt_Date").val();
+            var message = $("#txt_message").val();
+            if (fullName == "") {
+                alert("FullName is required");
+            }
+            else if (email == "") {
+                alert("Email is required");
+            }
+            else if (phoneNumber == "") {
+                alert("Phone Number is required");
+            }
+            else if (date == "") {
+                alert("Event Date is required");
+            }
+            else if (message == "") {
+                alert("Message is required");
+            }
+            else {
+
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "service.aspx/RequestQuoteAdd",
+                    data: "{'FullName':'" + fullName + "','Email_Id':'" + email + "','PhoneNumber':'" + phoneNumber + "','EventDate':'" + date + "','MessageRequest':'" + message + "','BusinessId':'" + requestid + "'}",
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        var result = data.d;
+                        if (result == 1) {
+
+
+                            $("#hidrequestid").val("");
+                            $("#txt_FullName").val("");
+                            $("#txt_email").val("");
+                            $("#txt_phoneNumber").val("");
+                            $("#txt_Date").val("");
+                            $("#txt_message").val("");
+                            alert("Request send successfully");
+
+
                         }
 
-                        .vertical-tab .nav-tabs li a:before {
-                            content: '';
-                            background-color: #B33771;
-                            height: 7%;
-                            width: 100%;
-                            border-radius: 30px;
-                            position: absolute;
-                            left: 0;
-                            bottom: 0;
-                            z-index: -1;
-                            transition: all 0.3s ease-out 0s;
+                        else {
+                            alert("Request not successfully");
                         }
 
-                        .vertical-tab .nav-tabs li a:hover:before,
-                        .vertical-tab .nav-tabs li.active a:before,
-                        .vertical-tab .nav-tabs li.active a:hover:before {
-                            height: 100%;
-                        }
 
-            .vertical-tab .tab-content {
-                color: #777;
-                background: #fff;
-                font-size: 14px;
-                font-weight: 500;
-                line-height: 21px;
-                padding: 15px;
-                border-radius: 5px;
-                box-shadow: 0 0 5px rgba(0,0,0,0.1);
-                display: table-cell;
-            }
 
-                .vertical-tab .tab-content h3 {
-                    color: #B33771;
-                    font-size: 22px;
-                    font-weight: 500;
-                    text-transform: capitalize;
-                    margin: 0 0 5px;
-                }
-
-        @media only screen and (max-width: 479px) {
-            .vertical-tab .nav-tabs {
-                width: 100%;
-                display: block;
-            }
-
-                .vertical-tab .nav-tabs li a {
-                    padding: 10px 25px 9px;
-                    margin: 0 0 12px;
-                }
-
-            .vertical-tab .tab-content {
-                font-size: 14px;
-                padding: 15px;
-                display: block;
+                    },
+                    error: OnErrorCall
+                });
             }
         }
-    </style>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="vertical-tab" role="tabpanel">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">Section 1</a></li>
-                        <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">Section 2</a></li>
-                        <li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Section 3</a></li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content tabs">
-                        <div role="tabpanel" class="tab-pane fade in active" id="Section1">
-                            <h3>Section 1</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, magna a ultricies volutpat, mi eros viverra massa, vitae consequat nisi justo in tortor. Proin accumsan felis ac felis dapibus, non iaculis mi varius, mi eros viverra massa.</p>
+
+
+        function OnErrorCall(response) {
+            alert(response.status + " " + response.statusText);
+
+
+            return false;
+        }
+
+
+
+    </script>
+    <asp:Panel ID="PanlDashboard" runat="server">
+          <asp:HiddenField ID="hidrequestid" ClientIDMode="Static" runat="server" />
+        <div class="row m-2">
+            <div class="col-6">
+                <section id="magnific">
+                    <div class="row">
+                        <%--<div class="large-12 column">
+                                            <h3>With Magnific Pop-up</h3>
+                                            Left click while zooming
+                                        </div>--%>
+
+
+                        <div class="large-5 column">
+                            <div class="xzoom-container" id="ProfileImages" runat="server">
+                            </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="Section2">
-                            <h3>Section 2</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, magna a ultricies volutpat, mi eros viverra massa, vitae consequat nisi justo in tortor. Proin accumsan felis ac felis dapibus, non iaculis mi varius, mi eros viverra massa.</p>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="Section3">
-                            <h3>Section 3</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, magna a ultricies volutpat, mi eros viverra massa, vitae consequat nisi justo in tortor. Proin accumsan felis ac felis dapibus, non iaculis mi varius, mi eros viverra massa.</p>
+                        <div class="large-7 column">
+                            <div>
+                                <table class="table table-bordered m-1">
+
+                                    <tr>
+                                        <td>Payment Type
+                                        </td>
+                                        <td>-
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblPaymentMode" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Booking Amount
+                                        </td>
+                                        <td>-
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblBookingAmount" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rest Amount
+                                        </td>
+                                        <td>-
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblRestAmount" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cancellation Policy
+                                        </td>
+                                        <td>-
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblCancellationPolicy" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Service City
+                                        </td>
+                                        <td>-
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblServiceCity" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Other City
+                                        </td>
+                                        <td>-
+                                        </td>
+                                        <td>
+                                            <asp:CheckBox ID="chkYesDash" Text="Yes" runat="server" /><br />
+                                            <asp:CheckBox ID="chkTravelDash" Text="Travel & Stay paid by Client" runat="server" />
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div>
+                                <hr />
+                                <label>Information about </label>
+                                <label id="lblBusinessInfoHeading" runat="server"></label>
+                                <label id="lblBusinessInfo" runat="server"></label>
+
+                            </div>
                         </div>
                     </div>
+                </section>
+            </div>
+            <div class="col-6">
+                <h2>
+                    <asp:Label ID="lblBusinessName" runat="server"></asp:Label></h2>
+                <h6>
+                    <asp:Label ID="lblBusinessAddress" runat="server"></asp:Label></h6>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+
+                        <button class="nav-link active" id="hometab" runat="server" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profiletab" runat="server" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
+                    </li>
+                </ul>
+                <div class="row h-50">
+                    <div class="tab-content col-6" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="hometab">
+
+                            <div class="form-group">
+                                <br />
+                                <h3>
+                                    <label for="lblPlatePrice">Plate Price</label></h3>
+                                <br />
+                                <label id="lblPlatePrice" runat="server"></label>
+                                <br />
+                                <h3>
+                                    <label for="lblPlateItems">Plate Items</label></h3>
+                                <br />
+                                <label id="lblPlateItems" runat="server"></label>
+                                <br />
+                                <h3>
+                                    <label for="lblCustomPlatePrice">Custom Plate</label></h3>
+                                <br />
+                                <label id="lblCustomPlatePrice" runat="server" class="list-group-item-light">Custom Plate option available according to need.</label>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profiletab">
+
+
+                            <div class="form-group">
+                                <br />
+                                <h3>
+                                    <label for="lblCookingPriceStart">Cooking Price Start</label></h3>
+                                <br />
+                                <label id="lblCookingPriceStart" runat="server" class="list-group-item-light"></label>
+                                <br />
+                                <h3>
+                                    <label for="lblNumberGuest">No. of Guest</label></h3>
+                                <br />
+                                <label id="lblNumberGuest" runat="server" class="list-group-item-light"></label>
+                                <br />
+                                <h3>
+                                    <label for="lblCustomCooking">Custom Option</label></h3>
+                                <br />
+                                <label id="lblCustomCooking" runat="server" class="list-group-item-light">Custom Cooking package option available according to need.</label>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            Contact Data something (such as a story or movie) considered as an object to be examined, explicated, or deconstructed
+
+
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <h5>Service Offered</h5>
+                        <div id="divServices" runat="server">
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+
+                            <h3>Contact- Vendor</h3>
+                            <span>Fill this form and vendor will contact you shortly. All information provided will be treated confidently. </span>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+
+                                <input type="text" class="form-control" id="txt_FullName" placeholder="First and last name">
+                            </div>
+                            <div class="form-group">
+
+                                <input type="text" class="form-control" id="txt_email" placeholder="City">
+                            </div>
+                            <div class="form-group">
+
+                                <input type="text" class="form-control" maxlength="10" id="txt_phoneNumber" placeholder="Phone number">
+                            </div>
+                            <div class="form-group">
+
+                                <input type="text" class="form-control" id="txt_Date" placeholder="Date (YYYY-MM-DD)">
+                            </div>
+                            <div class="form-group">
+
+                                <textarea class="form-control" cols="5" rows="5" id="txt_message" placeholder="Write your message"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <p>By clicking "Send Request" you are signing up and agreeing to the legal terms of WeddingWire.in</p>
+                            <input type="button" id="txt_buttonRequest" class="btn btn-danger" value="Submit" />
+                            <%--  <button type="button" class="btn btn-danger" data-dismiss="modal">Get quote</button>--%>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
-    </div>
+
+    </asp:Panel>
+
+
 </asp:Content>

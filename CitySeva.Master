@@ -23,6 +23,7 @@
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/popper.min.js"></script>
 
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> 
 
 
     <script type="text/javascript" src="Scripts/owl.carousel.min.js"></script>
@@ -31,6 +32,12 @@
     <script src="Scripts/jquery.selectBoxIt.min.js"></script>
     <script src="Scripts/home.js"></script>
 
+      <!-- xzoom plugin here -->
+
+    <script src="Scripts/modernizr.js"></script>
+    <script src="Scripts/xzoom.min.js"></script>
+    <link href="Css/xzoom.min.css" rel="stylesheet" />
+    <!-- hammer plugin here -->
 
 
     <script type="text/javascript">
@@ -202,7 +209,7 @@
               
         
         
-        <div id="home-section pb-5" style="padding-bottom:30px;">
+        <div id="home-section pb-5" style="padding-bottom:150px;">
             
            
 
@@ -222,5 +229,6 @@
                       </div>
           
     </form>
+        <script src="Scripts/setup.js"></script>
 </body>
 </html>
